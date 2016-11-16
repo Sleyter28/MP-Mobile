@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/AppTheme"
+    android:background="@color/main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contado1"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblCredit"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <TextView
+        android:text="@string/lblContado1"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="18sp"
+        tools:ignore="UnknownId"
+        android:textStyle="normal|bold"
+        android:layout_marginBottom="42dp"
+        android:layout_above="@+id/graf1"
+        android:layout_alignLeft="@+id/textView11"
+        android:layout_alignStart="@+id/textView11" />
+
+    <TextView
+        android:text="@string/credito1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/textView8"
+        android:layout_alignLeft="@+id/lblCredit"
+        android:layout_alignStart="@+id/lblCredit" />
+
+    <TextView
+        android:text="@string/lblCredito1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView11"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        tools:ignore="UnknownId"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/lblCredit"
+        android:layout_centerHorizontal="true" />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/graf1"
+        android:layout_width="match_parent"
+        android:layout_height="250sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+</RelativeLayout>

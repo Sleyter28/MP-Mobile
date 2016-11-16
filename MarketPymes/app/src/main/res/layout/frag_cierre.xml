@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.sleyterangulo.marketpymes.fragment.Frag_Cierre"
+    android:background="@color/main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cierre de Caja"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblCredit"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+
+    <ImageView
+        android:layout_width="180sp"
+        android:layout_height="170sp"
+        app:srcCompat="@drawable/iso_esquina"
+        android:id="@+id/imageView2"
+        android:scaleType="fitXY"
+        android:maxHeight="@android:dimen/app_icon_size"
+        android:maxWidth="@android:dimen/app_icon_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="" />
+
+    <TextView
+        android:text="Monto al cierre de caja:"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="18sp"
+        tools:ignore="UnknownId"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="78dp"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/lblCredit"
+        android:layout_alignRight="@+id/lblCredit"
+        android:layout_alignEnd="@+id/lblCredit"
+        android:layout_marginRight="51dp"
+        android:layout_marginEnd="51dp" />
+
+</RelativeLayout>
