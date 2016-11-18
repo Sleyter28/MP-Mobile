@@ -57,12 +57,13 @@
         android:layout_below="@+id/lblCredit"
         android:layout_centerHorizontal="true" />
 
-    <com.github.mikephil.charting.charts.LineChart
+    <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/graf1"
         android:layout_width="match_parent"
         android:layout_height="250sp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="21dp" />
 
 </RelativeLayout>

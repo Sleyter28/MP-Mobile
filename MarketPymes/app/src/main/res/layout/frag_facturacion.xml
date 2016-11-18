@@ -8,74 +8,80 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/lblFactitle"
         android:textSize="30sp"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
-        android:text="@string/lblFactitle"
+        android:layout_marginBottom="39dp"
         android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent" />
-
-    <Button
-    android:text="@string/btnSearch"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-        android:id="@+id/btnSearch"
-        android:layout_alignBaseline="@+id/txtSearchProduct"
-        android:layout_alignBottom="@+id/txtSearchProduct"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="45dp"
-        android:layout_marginEnd="45dp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background" />
+        tools:ignore="HardcodedText"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblFact" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="76dp"
         android:id="@+id/txtSearchProduct"
+        tools:ignore="UnknownIdInLayout"
+        android:paddingBottom="16dp"
+        android:paddingTop="20dp"
+        android:ems="10"
         android:hint="@string/txtCodPro"
-        tools:ignore="HardcodedText,UnknownIdInLayout"
-        android:layout_below="@+id/textView6"
-        android:layout_toLeftOf="@+id/btnSearch"
-        android:layout_toStartOf="@+id/btnSearch" />
+        android:layout_below="@+id/lblFact"
+        android:layout_alignLeft="@+id/lblFact"
+        android:layout_alignStart="@+id/lblFact" />
+
+    <Button
+        android:text="@string/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSearch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/background"
+        android:layout_alignBottom="@+id/txtSearchProduct"
+        android:layout_toRightOf="@+id/txtSearchProduct"
+        android:layout_toEndOf="@+id/txtSearchProduct"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
         android:ems="10"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="34dp"
         android:id="@+id/txtCant"
         android:hint="@string/txtCantPro"
-        android:layout_below="@+id/btnSearch"
-        android:layout_toLeftOf="@+id/btnSearch"
-        android:layout_toStartOf="@+id/btnSearch" />
+        android:layout_below="@+id/txtSearchProduct"
+        android:layout_alignLeft="@+id/txtSearchProduct"
+        android:layout_alignStart="@+id/txtSearchProduct" />
+
+    <Button
+        android:text="@string/btnAddPro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd"
+        android:background="@color/background"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignBottom="@+id/txtCant"
+        android:layout_toRightOf="@+id/txtCant"
+        android:layout_toEndOf="@+id/txtCant"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp" />
+
 
     <Button
         android:text="@string/btnFacturar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:id="@+id/button4"
+        android:id="@+id/btnFact"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@color/opossitive" />
 
-    <Button
-        android:text="@string/btnAddPro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button3"
-        android:background="@color/background"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_alignTop="@+id/txtCant"
-        android:layout_toRightOf="@+id/txtCant"
-        android:layout_toEndOf="@+id/txtCant" />
 
 </RelativeLayout>

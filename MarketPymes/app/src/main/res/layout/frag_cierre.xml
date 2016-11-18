@@ -39,12 +39,12 @@
         android:textSize="18sp"
         tools:ignore="UnknownId"
         android:textStyle="normal|bold"
-        android:layout_marginTop="78dp"
+        android:layout_marginTop="31dp"
         android:layout_width="wrap_content"
+        android:layout_marginRight="54dp"
+        android:layout_marginEnd="54dp"
         android:layout_below="@+id/lblCredit"
         android:layout_alignRight="@+id/lblCredit"
-        android:layout_alignEnd="@+id/lblCredit"
-        android:layout_marginRight="51dp"
-        android:layout_marginEnd="51dp" />
+        android:layout_alignEnd="@+id/lblCredit" />
 
 </RelativeLayout>
