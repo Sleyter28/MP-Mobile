@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lblFactitle"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="39dp"
+        android:textStyle="normal|bold"
+        tools:ignore="HardcodedText"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblFact" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/txtSearchProduct"
+        tools:ignore="UnknownIdInLayout"
+        android:paddingBottom="16dp"
+        android:paddingTop="20dp"
+        android:ems="10"
+        android:hint="@string/txtCodPro"
+        android:layout_below="@+id/lblFact"
+        android:layout_alignLeft="@+id/lblFact"
+        android:layout_alignStart="@+id/lblFact" />
+
+    <Button
+        android:text="@string/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSearch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/background"
+        android:layout_alignBottom="@+id/txtSearchProduct"
+        android:layout_toRightOf="@+id/txtSearchProduct"
+        android:layout_toEndOf="@+id/txtSearchProduct"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:layout_marginTop="34dp"
+        android:id="@+id/txtCant"
+        android:hint="@string/txtCantPro"
+        android:layout_below="@+id/txtSearchProduct"
+        android:layout_alignLeft="@+id/txtSearchProduct"
+        android:layout_alignStart="@+id/txtSearchProduct" />
+
+    <Button
+        android:text="@string/btnAddPro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAdd"
+        android:background="@color/background"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_alignBottom="@+id/txtCant"
+        android:layout_toRightOf="@+id/txtCant"
+        android:layout_toEndOf="@+id/txtCant"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp" />
+
+
+    <Button
+        android:text="@string/btnFacturar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:id="@+id/btnFact"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/opossitive" />
+
+
+</RelativeLayout>

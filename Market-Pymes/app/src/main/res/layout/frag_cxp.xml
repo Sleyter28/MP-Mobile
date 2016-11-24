@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.market_pymes.fragment.Fragment4"
+    android:background="@color/main">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuentas por Pagar"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:textStyle="normal|bold"
+        tools:ignore="HardcodedText"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblCxP" />
+
+    <ImageView
+        android:layout_width="180sp"
+        android:layout_height="170sp"
+        app:srcCompat="@drawable/iso_esquina"
+        android:id="@+id/imageView2"
+        android:scaleType="fitXY"
+        android:maxHeight="@android:dimen/app_icon_size"
+        android:maxWidth="@android:dimen/app_icon_size"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/txtNoF"
+        android:paddingBottom="16dp"
+        android:paddingTop="20dp"
+        tools:ignore="RtlHardcoded,UnknownIdInLayout"
+        android:hint="@string/nameCod"
+        android:layout_below="@+id/lblCxP"
+        android:layout_alignLeft="@+id/lblCxP"
+        android:layout_alignStart="@+id/lblCxP"/>
+
+    <Button
+        android:text="@string/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtNoF"
+        android:layout_toRightOf="@+id/txtNoF"
+        android:layout_toEndOf="@+id/txtNoF"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:id="@+id/btnSearch"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/background" />
+
+</RelativeLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main">
+
+    <ImageView
+        android:layout_width="180sp"
+        android:layout_height="170sp"
+        app:srcCompat="@drawable/iso_esquina"
+        android:id="@+id/imageView2"
+        android:scaleType="fitXY"
+        android:maxHeight="@android:dimen/app_icon_size"
+        android:maxWidth="@android:dimen/app_icon_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuentas por Cobrar"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="39dp"
+        android:textStyle="normal|bold"
+        tools:ignore="HardcodedText"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblCxC" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/txtNoF"
+        tools:ignore="UnknownIdInLayout"
+        android:paddingBottom="16dp"
+        android:paddingTop="20dp"
+        android:ems="10"
+        android:hint="@string/nameCod"
+        android:layout_below="@+id/lblCxC"
+        android:layout_alignLeft="@+id/lblCxC"
+        android:layout_alignStart="@+id/lblCxC" />
+
+    <Button
+        android:text="@string/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtNoF"
+        android:layout_toRightOf="@+id/txtNoF"
+        android:layout_toEndOf="@+id/txtNoF"
+        android:layout_marginLeft="6dp"
+        android:layout_marginStart="6dp"
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:background="@color/background" />
+</RelativeLayout>
