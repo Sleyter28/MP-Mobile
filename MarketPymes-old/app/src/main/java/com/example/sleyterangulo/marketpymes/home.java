@@ -25,9 +25,6 @@ import com.example.sleyterangulo.marketpymes.model.ItemSlideMenu;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by sleyterangulo on 11/7/16.
- */
 
 public class home extends ActionBarActivity {
 
