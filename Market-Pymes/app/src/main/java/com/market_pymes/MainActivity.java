@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     // url to get all products list
-    private static String url_login = "http://192.168.0.28/Web/log.php";
+    private final String url_loginS1 = "http://192.168.0.28/Web-Service/loginS1.php";
+    private final String url_loginS2 = "http://192.168.0.28/Web-Service/loginS2.php";
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
+            final String DB_name;
             int success;
             String success2;
 
@@ -108,23 +110,31 @@ public class MainActivity extends AppCompatActivity {
             List params = new ArrayList();
             System.out.println("Email obtenido: "+ email);
             params.add(new BasicNameValuePair("email", email));
-            //params.add(new BasicNameValuePair("password", password));
+
 
             Log.d("request!", "starting");
             // getting product details by making HTTP request
-            JSONObject json = jParser.makeHttpRequest(url_login, "POST", params);
+            JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
+            try {
+                DB_name = json.getString("direction");
+                params.add(new BasicNameValuePair("password", password));
+                params.add(new BasicNameValuePair("DB_name", DB_name));
+
+                JSONObject Json = jParser.makeHttpRequest(url_loginS2, "POST", params);
+                String id_user = Json.getString("cp_id_user_919819828828");
+                String user = Json.getString("cp_user_19829928822");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
             // check your log for json response
-            Log.d("Login attempt", json.toString());
-            System.out.println("Login attempt: " + json.toString());
+            //Log.d("Login attempt", json.toString());
+            //System.out.println("Login attempt: " + json.toString());
 
 
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         **/
         protected void onPostExecute(String file_url) {
             pDialog.dismiss();
             if (file_url != null){
