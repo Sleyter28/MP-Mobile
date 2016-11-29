@@ -36,7 +36,6 @@ public class JsonParser {
     // by making HTTP POST or GET mehtod
     public JSONObject makeHttpRequest(String url, String method,
                                       List params) {
-
         // Making HTTP request
         try {
 
