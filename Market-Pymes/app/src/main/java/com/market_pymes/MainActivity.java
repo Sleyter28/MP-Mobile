@@ -1,7 +1,9 @@
 package com.market_pymes;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +18,8 @@ import com.market_pymes.helper.InternetStatus;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     JsonParser jParser = new JsonParser();
     // url to get all products list
     private final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
+    //private final String url_loginS1 = "http://192.168.0.28/Web-Service/loginS1.php";
     private final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
 
     @Override
@@ -87,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
-            String DB_name;
             String user = null;
             try {
                 // Preparando parametros
@@ -95,25 +99,28 @@ public class MainActivity extends AppCompatActivity {
                 params.add(new BasicNameValuePair("email", email));
                 // consulta al servidor
                 JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
-                //DB_name = json.getString("BD_name");
+                //String DB_name = json.getString("BD_name");
                 String res = json.toString();
                 String response[] = res.split("\"");
-                DB_name = response[7];
+                String DB_name = response[7];
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("DB_name", DB_name));
                 JSONObject Json = jParser.makeHttpRequest(url_loginS2, "POST", params);
                 String id_user = Json.getString("cp_id_user_919819828828");
-                return id_user;
+                return DB_name;
             } catch (JSONException e) {
                 e.printStackTrace();
                 return null;
             }
         }
 
-        protected void onPostExecute(String id_user) {
+        protected void onPostExecute(String DB_name) {
             pDialog.dismiss();
-            if (id_user != null){
-                Toast.makeText(MainActivity.this,id_user,Toast.LENGTH_LONG).show();
+            if (DB_name != null){
+                /*SharedPreferences prefs = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("db_name", DB_name);
+                editor.commit();*/
                 Intent home = new Intent(MainActivity.this,home.class);
                 finish();
                 startActivity(home);

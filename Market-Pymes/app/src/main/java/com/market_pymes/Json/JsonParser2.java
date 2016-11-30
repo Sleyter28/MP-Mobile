@@ -21,7 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
-public class JsonParser {
+public class JsonParser2 {
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
@@ -29,7 +29,7 @@ public class JsonParser {
     // constructor
 
 
-    public JsonParser() {
+    public JsonParser2() {
     }
 
     // function get json from url

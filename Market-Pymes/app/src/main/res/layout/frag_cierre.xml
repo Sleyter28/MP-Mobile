@@ -35,7 +35,7 @@
     <TextView
         android:text="Monto al cierre de caja:"
         android:layout_height="wrap_content"
-        android:id="@+id/textView8"
+        android:id="@+id/Vcredito"
         android:textSize="18sp"
         tools:ignore="UnknownId"
         android:textStyle="normal|bold"
