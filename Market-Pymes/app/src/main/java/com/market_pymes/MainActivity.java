@@ -4,141 +4,126 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.market_pymes.Json.JsonParser;
-
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
+import com.market_pymes.helper.InternetStatus;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    //declaraciones generales variables e instancias
     private EditText etEmail;
     private EditText etPassword;
     private String email;
     private String password;
-
+    private InternetStatus IntSts = new InternetStatus();
     // Progress Dialog
     private ProgressDialog pDialog;
-
     // Creating JSON Parser object
     JsonParser jParser = new JsonParser();
-
-
     // url to get all products list
-    private final String url_loginS1 = "http://192.168.0.28/Web-Service/loginS1.php";
-    private final String url_loginS2 = "http://192.168.0.28/Web-Service/loginS2.php";
-
-    // JSON Node names
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
+    private final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
+    //private final String url_loginS1 = "http://192.168.0.28/Web-Service/loginS1.php";
+    private final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        Spinner dropdown = (Spinner)findViewById(R.id.listCountries);
-        String[] paisesArray = {"México","Guatemala","El Salvador","Honduras","Costa Rica","Nicaragua","Panamá","República Dominicana","Colombia","Perú","Paraguay","Uruguay","Ecuador","Bolivia","Argentina"};
-
+        final Spinner dropdown = (Spinner)findViewById(R.id.listCountries);
+        String[] paisesArray = {"Costa Rica","México","Guatemala","El Salvador","Honduras","Nicaragua","Panamá","República Dominicana","Colombia","Perú","Paraguay","Uruguay","Ecuador","Bolivia","Argentina"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, paisesArray);
         dropdown.setAdapter(adapter);
 
-        Button btnLogin = (Button) findViewById(R.id.btnLogin);
 
+        Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String locacion = dropdown.getSelectedItem().toString();
                 etEmail = (EditText) findViewById(R.id.email);
                 etPassword = (EditText) findViewById(R.id.pass);
                 email = etEmail.getText().toString();
+                email = email.toUpperCase();
                 password = etPassword.getText().toString();
-                new AttemptLogin().execute(email);
+                if (!locacion.isEmpty() && !email.isEmpty() && !password.isEmpty()){
+                    if (IntSts.isOnline(MainActivity.this)){
+                        try {
+                            new AttemptLogin().execute(email);
+                        } catch (Exception e) {
+                            Toast toast = Toast.makeText(getApplicationContext(), "email, contraseña o país incorrectos", Toast.LENGTH_SHORT);
+                            toast.show();
+                        }
+                    } else {
+                        Toast toast = Toast.makeText(getApplicationContext(), "conexión de datos fallida", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "El ingreso de los datos es requerido", Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
-
-
     }
 
     class AttemptLogin extends AsyncTask<String, String, String> {
-        // Antes de empezar el background thread Show Progress Dialog
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             pDialog = new ProgressDialog(MainActivity.this);
-            pDialog.setMessage("Attempting login...");
+            pDialog.setMessage("Conectando a su cuenta...");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
             pDialog.show();
         }
 
         protected String doInBackground(String... args) {
-            final String DB_name;
-            int success;
-            String success2;
-
-            // Building Parameters
-            List params = new ArrayList();
-            System.out.println("Email obtenido: "+ email);
-            params.add(new BasicNameValuePair("email", email));
-
-
-            Log.d("request!", "starting");
-            // getting product details by making HTTP request
-            JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
+            String user = null;
             try {
-                DB_name = json.getString("direction");
+                // Preparando parametros
+                List params = new ArrayList();
+                params.add(new BasicNameValuePair("email", email));
+                // consulta al servidor
+                JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
+                //String DB_name = json.getString("BD_name");
+                String res = json.toString();
+                String response[] = res.split("\"");
+                String DB_name = response[7];
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("DB_name", DB_name));
-
                 JSONObject Json = jParser.makeHttpRequest(url_loginS2, "POST", params);
                 String id_user = Json.getString("cp_id_user_919819828828");
-                String user = Json.getString("cp_user_19829928822");
+                return DB_name;
             } catch (JSONException e) {
                 e.printStackTrace();
+                return null;
             }
-
-            // check your log for json response
-            //Log.d("Login attempt", json.toString());
-            //System.out.println("Login attempt: " + json.toString());
-
-
-            return null;
         }
 
-        protected void onPostExecute(String file_url) {
+        protected void onPostExecute(String DB_name) {
             pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(MainActivity.this,file_url,Toast.LENGTH_LONG).show();
+            if (DB_name != null){
+                /*SharedPreferences prefs = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putString("db_name", DB_name);
+                editor.commit();*/
+                Intent home = new Intent(MainActivity.this,home.class);
+                finish();
+                startActivity(home);
             }
         }
     }
