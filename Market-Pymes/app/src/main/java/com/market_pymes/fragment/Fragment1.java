@@ -3,6 +3,7 @@ package com.market_pymes.fragment;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,14 @@ import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.JsonHelper;
 
 public class Fragment1 extends Fragment {
     private TextView Vcont, Vcred;
+    private String date, DB_name;
 
     public Fragment1() {
     }
@@ -31,11 +35,14 @@ public class Fragment1 extends Fragment {
         View rootView = inflater.inflate(R.layout.frag_home, container, false);
         BarChart barChart = (BarChart) rootView.findViewById(R.id.graf1);
 
+        date = getdate();
+        Globals DataBase = Globals.getInstance();
+        DB_name = DataBase.getDB();
         Vcont = (TextView) rootView.findViewById(R.id.Vcontado);
         Vcred = (TextView) rootView.findViewById(R.id.Vcredito);
 
-        new Ccontado().execute();
-        new Ccredito().execute();
+        new Ccontado().execute(date, DB_name);
+        new Ccredito().execute(date, DB_name);
 
         ArrayList<BarEntry> batEntries = new ArrayList<BarEntry>();
         batEntries.add(new BarEntry(44f,0));
@@ -62,15 +69,21 @@ public class Fragment1 extends Fragment {
         return rootView;
     }
 
+    private String getdate() {
+        Date d = new Date();
+        CharSequence fecha  = DateFormat.format("yyyy/MM/dd", d.getTime());
+        String Fecha = fecha.toString();
+        return Fecha;
+    }
+
     class Ccontado extends AsyncTask<String, String, String> {
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
             String json = "";
             try {
-                // Preparando parametros
                 List param = new ArrayList();
-                param.add(new BasicNameValuePair("DB_name", "demomovil"));
-                param.add(new BasicNameValuePair("fecha", "2016/11/26"));
+                param.add(new BasicNameValuePair("DB_name", DB_name));
+                param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "1"));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
                 json = JsonHelper.HttpRequest(url_home, param);
@@ -93,10 +106,9 @@ public class Fragment1 extends Fragment {
             JsonHelper JsonHelper = new JsonHelper();
             String json = "";
             try {
-                // Preparando parametros
                 List param = new ArrayList();
-                param.add(new BasicNameValuePair("DB_name", "demomovil"));
-                param.add(new BasicNameValuePair("fecha", "2016/11/09"));
+                param.add(new BasicNameValuePair("DB_name", DB_name));
+                param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "2"));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
                 json = JsonHelper.HttpRequest(url_home, param);
