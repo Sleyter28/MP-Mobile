@@ -21,18 +21,6 @@
         android:layout_marginTop="32dp" />
 
     <TextView
-        android:text="@string/lblCredito1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Vcontado"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        tools:ignore="UnknownId"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/lblCredit"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
         android:text="@string/credito1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,7 +35,6 @@
 
     <TextView
         android:text="@string/lblContado1"
-        android:layout_width="113dp"
         android:layout_height="wrap_content"
         android:id="@+id/Vcredito"
         android:textSize="18sp"
@@ -55,14 +42,27 @@
         android:textStyle="normal|bold"
         android:layout_below="@+id/textView7"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="18dp"
+        android:layout_width="wrap_content" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/graf1"
         android:layout_width="match_parent"
-        android:layout_height="280dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_height="350dp" />
+
+    <TextView
+        android:text="@string/lblCredito1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Vcontado"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        tools:ignore="UnknownId"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/lblCredit"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -1,9 +1,7 @@
 package com.market_pymes;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +12,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import com.market_pymes.Json.JsonParser;
+import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,10 +114,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String DB_name) {
             pDialog.dismiss();
             if (DB_name != null){
-                /*SharedPreferences prefs = getSharedPreferences("DataBase",Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString("db_name", DB_name);
-                editor.commit();*/
+                Globals DataBase = Globals.getInstance();
+                DataBase.setDB(DB_name);
                 Intent home = new Intent(MainActivity.this,home.class);
                 finish();
                 startActivity(home);
