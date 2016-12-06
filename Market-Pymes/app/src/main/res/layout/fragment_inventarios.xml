@@ -24,9 +24,9 @@
         android:text="@string/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtNoF"
-        android:layout_toRightOf="@+id/txtNoF"
-        android:layout_toEndOf="@+id/txtNoF"
+        android:layout_alignBottom="@+id/valueCxP"
+        android:layout_toRightOf="@+id/valueCxP"
+        android:layout_toEndOf="@+id/valueCxP"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:id="@+id/btnSearch"
@@ -54,7 +54,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@color/opossitive"
         android:text="@string/btnExistencias"
-        android:layout_below="@+id/txtNoF"
+        android:layout_below="@+id/valueCxP"
         android:layout_centerHorizontal="true" />
 
     <TextView
@@ -73,7 +73,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:layout_marginTop="19dp"
-        android:id="@+id/txtNoF"
+        android:id="@+id/valueCxP"
         tools:ignore="UnknownIdInLayout"
         android:hint="@string/nameCodDes"
         android:layout_below="@+id/lblInventarios"

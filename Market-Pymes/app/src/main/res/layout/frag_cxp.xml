@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.market_pymes.fragment.Fragment4"
+    tools:context="com.market_pymes.fragment.FragmentCxP"
     android:background="@color/main">
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/txtNoF"
+        android:id="@+id/valueCxP"
         android:paddingBottom="16dp"
         android:paddingTop="20dp"
         tools:ignore="RtlHardcoded,UnknownIdInLayout"
@@ -51,13 +51,23 @@
         android:text="@string/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtNoF"
-        android:layout_toRightOf="@+id/txtNoF"
-        android:layout_toEndOf="@+id/txtNoF"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:id="@+id/btnSearch"
+        android:id="@+id/btnCxP"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background" />
+        android:background="@color/background"
+        android:layout_alignBottom="@+id/valueCxP"
+        android:layout_toRightOf="@+id/valueCxP"
+        android:layout_toEndOf="@+id/valueCxP"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp" />
+
+    <TextView
+        android:text="text view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:id="@+id/Resp"
+        android:layout_below="@+id/valueCxP"
+        android:layout_alignLeft="@+id/valueCxP"
+        android:layout_alignStart="@+id/valueCxP" />
 
 </RelativeLayout>

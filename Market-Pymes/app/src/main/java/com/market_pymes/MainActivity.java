@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
     JsonParser jParser = new JsonParser();
     // url to get all products list
     private final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
-    //private final String url_loginS1 = "http://192.168.0.28/Web-Service/loginS1.php";
     private final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
 
     @Override
@@ -94,9 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 // Preparando parametros
                 List params = new ArrayList();
                 params.add(new BasicNameValuePair("email", email));
-                // consulta al servidor
                 JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
-                //String DB_name = json.getString("BD_name");
                 String res = json.toString();
                 String response[] = res.split("\"");
                 String DB_name = response[7];

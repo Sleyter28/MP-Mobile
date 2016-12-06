@@ -8,32 +8,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.market_pymes.R;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
 import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.market_pymes.Single.Globals;
+import com.market_pymes.helper.InternetStatus;
 import com.market_pymes.helper.JsonHelper;
 
-public class Fragment1 extends Fragment {
+public class FragmentHome extends Fragment {
     private TextView Vcont, Vcred;
     private String date, DB_name;
+    private InternetStatus IntSts = new InternetStatus();
+    //private PieChart mChart;
+    //private float[] yData = { 5, 10, 15, 30, 40 };
+    //private String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
 
-    public Fragment1() {
+    public FragmentHome() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.frag_home, container, false);
-        BarChart barChart = (BarChart) rootView.findViewById(R.id.graf1);
+        ///mChart = (PieChart) rootView.findViewById(R.id.graf1);
+        //BarChart barChart = (BarChart) rootView.findViewById(R.id.graf1);
+
 
         date = getdate();
         Globals DataBase = Globals.getInstance();
@@ -41,9 +43,16 @@ public class Fragment1 extends Fragment {
         Vcont = (TextView) rootView.findViewById(R.id.Vcontado);
         Vcred = (TextView) rootView.findViewById(R.id.Vcredito);
 
-        new Ccontado().execute(date, DB_name);
-        new Ccredito().execute(date, DB_name);
+        if (IntSts.isOnline(getActivity())){
+            new Ccontado().execute(date, DB_name);
+            new Ccredito().execute(date, DB_name);
 
+        } else {
+            Toast toast = Toast.makeText(getActivity(), "Se perdió la conexión de datos", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
+/*
         ArrayList<BarEntry> batEntries = new ArrayList<BarEntry>();
         batEntries.add(new BarEntry(44f,0));
         batEntries.add(new BarEntry(88f,1));
@@ -64,7 +73,7 @@ public class Fragment1 extends Fragment {
         barData.setValueTextSize(12f);
         barData.setBarWidth(0.9f);
         barChart.setTouchEnabled(false);
-        barChart.setData(barData);
+        barChart.setData(barData);*/
 
         return rootView;
     }

@@ -37,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:id="@+id/txtNoF"
+        android:id="@+id/valueCxC"
         tools:ignore="UnknownIdInLayout"
         android:paddingBottom="16dp"
         android:paddingTop="20dp"
@@ -51,12 +51,22 @@
         android:text="@string/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/txtNoF"
-        android:layout_toRightOf="@+id/txtNoF"
-        android:layout_toEndOf="@+id/txtNoF"
-        android:layout_marginLeft="6dp"
-        android:layout_marginStart="6dp"
-        android:id="@+id/button2"
+        android:id="@+id/btnCxC"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background" />
+        android:background="@color/background"
+        android:layout_alignBottom="@+id/valueCxC"
+        android:layout_toRightOf="@+id/valueCxC"
+        android:layout_toEndOf="@+id/valueCxC" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="51dp"
+        android:id="@+id/res"
+        android:layout_below="@+id/valueCxC"
+        android:layout_alignLeft="@+id/valueCxC"
+        android:layout_alignStart="@+id/valueCxC" />
 </RelativeLayout>
