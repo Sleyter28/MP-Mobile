@@ -116,6 +116,7 @@ if (!empty($_POST)) {
             }
             
         }
+        $total_final = number_format($total_final, 2);
         echo json_encode($total_final);
     }
     catch(PDOException $e) {
