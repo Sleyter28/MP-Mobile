@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
-
 import android.graphics.Color;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -30,8 +28,6 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.text.DecimalFormat;
@@ -41,15 +37,14 @@ public class FragmentHome extends Fragment {
     private TextView Vcont, Vcred;
     private String date, DB_name;
     private InternetStatus IntSts = new InternetStatus();
+    private String[] xValues = {"Contado", "Credito"};
+    private float[] yValues;
+    private float Cred = 0;
+    private float Cont = 0;
     PieChart mChart;
-    // we're going to display pie chart for school attendance
-    private int[] yValues = {21, 2, 2};
-    private String[] xValues = {"Present Days", "Absents", "Leaves"};
 
-    // colors for different sections in pieChart
-    public static  final int[] MY_COLORS = {
-            Color.rgb(84,124,101), Color.rgb(64,64,64), Color.rgb(153,19,0),
-            Color.rgb(38,40,53), Color.rgb(215,60,55)
+    public static  final int[] COLORS = {
+            Color.rgb(84,124,101), Color.rgb(64,64,64)
     };
 
     public FragmentHome() {
@@ -59,39 +54,8 @@ public class FragmentHome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.frag_home, container, false);
-
-        //=======================================================================
-        //=======================================================================
         mChart = (PieChart) rootView.findViewById(R.id.graf);
-
-        //mChart.setUsePercentValues(true);
-//        mChart.setDescription("");
-
         mChart.setRotationEnabled(true);
-
-        mChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
-
-            @Override
-            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
-                // display msg when value selected
-                if (e == null)
-                    return;
-
-                Toast.makeText(getActivity(),
-                        xValues[e.getXIndex()] + " is " + e.getVal() + "", Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected() {
-
-            }
-        });
-
-        // setting sample Data for Pie Chart
-        setDataForPieChart();
-        //=======================================================================
-        //=======================================================================
-
 
         date = getdate();
         Globals DataBase = Globals.getInstance();
@@ -102,7 +66,6 @@ public class FragmentHome extends Fragment {
         if (IntSts.isOnline(getActivity())){
             new Ccontado().execute(date, DB_name);
             new Ccredito().execute(date, DB_name);
-
         } else {
             Toast toast = Toast.makeText(getActivity(), "Se perdió la conexión de datos", Toast.LENGTH_SHORT);
             toast.show();
@@ -111,56 +74,41 @@ public class FragmentHome extends Fragment {
     }
 
 
-    public void setDataForPieChart() {
+    public void setDataForPieChart(float[] yValues, String[] xValues) {
         ArrayList<Entry> yVals1 = new ArrayList<Entry>();
-
-        for (int i = 1; i < yValues.length; i++)
+        for (int i = 0; i < yValues.length; i++)
             yVals1.add(new Entry(yValues[i], i));
 
         ArrayList<String> xVals = new ArrayList<String>();
-
-        for (int i = 1; i < xValues.length; i++)
+        for (int i = 0; i < xValues.length; i++)
             xVals.add(xValues[i]);
-
         // create pieDataSet
         PieDataSet dataSet = new PieDataSet(yVals1, "");
         dataSet.setSliceSpace(3);
         dataSet.setSelectionShift(5);
-
         // adding colors
         ArrayList<Integer> colors = new ArrayList<Integer>();
-
         // Added My Own colors
-        for (int c : MY_COLORS)
-            colors.add(c);
-
-
+        for (int c : COLORS) colors.add(c);
         dataSet.setColors(colors);
-
         //  create pie data object and set xValues and yValues and set it to the pieChart
         PieData data = new PieData(xVals, dataSet);
         //   data.setValueFormatter(new DefaultValueFormatter());
         //   data.setValueFormatter(new PercentFormatter());
-
         data.setValueFormatter(new MyValueFormatter());
-        data.setValueTextSize(11f);
+        data.setValueTextSize(14f);
         data.setValueTextColor(Color.WHITE);
 
         mChart.setData(data);
-
         // undo all highlights
         mChart.highlightValues(null);
-
         // refresh/update pie chart
         mChart.invalidate();
-
         // animate piechart
         mChart.animateXY(1400, 1400);
-
-
         // Legends to show on bottom of the graph
         Legend l = mChart.getLegend();
-        l.setPosition(Legend.LegendPosition.BELOW_CHART_CENTER);
+        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
         l.setXEntrySpace(7);
         l.setYEntrySpace(5);
     }
@@ -171,7 +119,7 @@ public class FragmentHome extends Fragment {
         private DecimalFormat mFormat;
 
         public MyValueFormatter() {
-            mFormat = new DecimalFormat("###,###,##0"); // use one decimal if needed
+            mFormat = new DecimalFormat("######,##0"); // use one decimal if needed
         }
 
         @Override
@@ -209,7 +157,11 @@ public class FragmentHome extends Fragment {
 
         protected void onPostExecute(String json) {
             if (json != null){
-                Vcont.setText("Monto total: " + json);
+                String val = json.toString();
+                String[] Values = val.split("\n");
+                Cont = Float.parseFloat(Values[0]);
+                DecimalFormat formateador = new DecimalFormat("###,###,###.##");
+                Vcont.setText("Monto total: " + formateador.format (Cont));
             }
         }
     }
@@ -234,7 +186,13 @@ public class FragmentHome extends Fragment {
 
         protected void onPostExecute(String json) {
             if (json != null){
-                Vcred.setText("Monto total: " + json);
+                String val = json.toString();
+                String[] Values = val.split("\n");
+                Cred = Float.parseFloat(Values[0]);
+                DecimalFormat formateador = new DecimalFormat("###,###,###.##");
+                Vcred.setText("Monto total: " + formateador.format (Cred));
+                float[] yValues = {Cont, Cred};
+                setDataForPieChart(yValues, xValues);
             }
         }
     }
