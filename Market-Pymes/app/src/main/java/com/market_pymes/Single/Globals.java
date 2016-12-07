@@ -17,6 +17,10 @@ public class Globals {
         return this.db_name;
     }
 
+    public void logOut() {
+        this.db_name = null;
+    }
+
     public static synchronized Globals getInstance(){
         if(instance==null){
             instance=new Globals();

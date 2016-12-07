@@ -23,6 +23,7 @@ public class SlidingMenuAdapter extends BaseAdapter {
         this.lstItem = lstItem;
     }
 
+
     @Override
     public int getCount() {
         return lstItem.size();
@@ -49,8 +50,6 @@ public class SlidingMenuAdapter extends BaseAdapter {
         img.setImageResource(item.getImgId());
         tv.setText(item.getTitle());
         tv.setTextColor(Color.WHITE);
-
-
         return v;
     }
 }
