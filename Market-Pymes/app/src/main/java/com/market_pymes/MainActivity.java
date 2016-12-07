@@ -6,20 +6,20 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
+
 import com.market_pymes.Json.JsonParser;
 import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
+
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class MainActivity extends AppCompatActivity {
     private EditText etEmail;
@@ -40,30 +40,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        final Spinner dropdown = (Spinner)findViewById(R.id.listCountries);
-        String[] paisesArray = {"Costa Rica","México","Guatemala","El Salvador","Honduras","Nicaragua","Panamá","República Dominicana","Colombia","Perú","Paraguay","Uruguay","Ecuador","Bolivia","Argentina"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, paisesArray);
-        dropdown.setAdapter(adapter);
-
-
         Button btnLogin = (Button) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String locacion = dropdown.getSelectedItem().toString();
-                etEmail = (EditText) findViewById(R.id.email);
-                etPassword = (EditText) findViewById(R.id.pass);
+                etEmail = (EditText) findViewById(R.id.txtEmail);
+                etPassword = (EditText) findViewById(R.id.txtPass);
                 email = etEmail.getText().toString();
                 email = email.toUpperCase();
                 password = etPassword.getText().toString();
-                if (!locacion.isEmpty() && !email.isEmpty() && !password.isEmpty()){
+                if (!email.isEmpty() && !password.isEmpty()){
                     if (IntSts.isOnline(MainActivity.this)){
-                        try {
-                            new AttemptLogin().execute(email);
-                        } catch (Exception e) {
-                            Toast toast = Toast.makeText(getApplicationContext(), "email, contraseña o país incorrectos", Toast.LENGTH_SHORT);
-                            toast.show();
-                        }
+                        new AttemptLogin().execute(email);
                     } else {
                         Toast toast = Toast.makeText(getApplicationContext(), "conexión de datos fallida", Toast.LENGTH_SHORT);
                         toast.show();
@@ -101,8 +89,9 @@ public class MainActivity extends AppCompatActivity {
                 params.add(new BasicNameValuePair("DB_name", DB_name));
                 JSONObject Json = jParser.makeHttpRequest(url_loginS2, "POST", params);
                 String id_user = Json.getString("cp_id_user_919819828828");
+                pDialog.dismiss();
                 return DB_name;
-            } catch (JSONException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
@@ -116,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent home = new Intent(MainActivity.this,home.class);
                 finish();
                 startActivity(home);
+            } else {
+                Toast toast = Toast.makeText(getApplicationContext(), "email o contraseña incorrectos", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
     }

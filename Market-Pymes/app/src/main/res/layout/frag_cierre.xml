@@ -23,7 +23,7 @@
         android:layout_width="180sp"
         android:layout_height="170sp"
         app:srcCompat="@drawable/iso_esquina"
-        android:id="@+id/imageView2"
+        android:id="@+id/logoCxc"
         android:scaleType="fitXY"
         android:maxHeight="@android:dimen/app_icon_size"
         android:maxWidth="@android:dimen/app_icon_size"

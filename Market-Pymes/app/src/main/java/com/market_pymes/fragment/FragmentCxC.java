@@ -1,6 +1,7 @@
 package com.market_pymes.fragment;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.market_pymes.MainActivity;
 import com.market_pymes.R;
 import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
@@ -24,6 +27,8 @@ public class FragmentCxC extends Fragment {
     private TextView Res;
     private Button CxC;
     private InternetStatus IntSts = new InternetStatus();
+    // Progress Dialog
+    private ProgressDialog pDialog;
 
     public FragmentCxC() {
     }
@@ -64,6 +69,16 @@ public class FragmentCxC extends Fragment {
     }
 
     class CuentasXCobrar extends AsyncTask<String, String, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(getActivity());
+            pDialog.setMessage("Obteniendo datos...");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(true);
+            pDialog.show();
+        }
+
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
             String json = "";
@@ -73,6 +88,7 @@ public class FragmentCxC extends Fragment {
                 param.add(new BasicNameValuePair("valor", valor));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/CxC.php";
                 json = JsonHelper.HttpRequest(url_home, param);
+                pDialog.dismiss();
                 return json;
             } catch (Exception e) {
                 e.printStackTrace();
