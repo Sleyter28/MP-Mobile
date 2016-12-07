@@ -7,8 +7,8 @@
     android:theme="@style/AppTheme"
     android:background="@color/main">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/graf1"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/graf"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
