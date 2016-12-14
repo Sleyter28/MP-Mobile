@@ -3,6 +3,7 @@ package com.market_pymes;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -13,12 +14,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.market_pymes.Single.Globals;
 import com.market_pymes.adapter.SlidingMenuAdapter;
 import com.market_pymes.fragment.Frag_Cierre;
-import com.market_pymes.fragment.Fragment1;
+import com.market_pymes.fragment.FragmentHome;
 import com.market_pymes.fragment.Fragment2;
-import com.market_pymes.fragment.Fragment3;
-import com.market_pymes.fragment.Fragment4;
+import com.market_pymes.fragment.FragmentCxC;
+import com.market_pymes.fragment.FragmentCxP;
 import com.market_pymes.fragment.Fragment_Inventarios;
 import com.market_pymes.model.ItemSlideMenu;
 
@@ -111,6 +113,16 @@ public class home extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+
+        if (id == R.id.logout) {
+            Globals DataBase = Globals.getInstance();
+            DataBase.logOut();
+            Intent Main = new Intent(home.this,MainActivity.class);
+            finish();
+            startActivity(Main);
+        }
+
         if(actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
@@ -129,16 +141,16 @@ public class home extends ActionBarActivity {
         Fragment fragment = null;
         switch (pos) {
             case 0:
-                fragment = new Fragment1();
+                fragment = new FragmentHome();
                 break;
             case 1:
                 fragment = new Fragment2();
                 break;
             case 2:
-                fragment = new Fragment3();
+                fragment = new FragmentCxC();
                 break;
             case 3:
-                fragment = new Fragment4();
+                fragment = new FragmentCxP();
                 break;
             case 4:
                 fragment = new Fragment_Inventarios();
@@ -147,7 +159,7 @@ public class home extends ActionBarActivity {
                 fragment = new Frag_Cierre();
                 break;
             default:
-                fragment = new Fragment1();
+                fragment = new FragmentHome();
                 break;
         }
 

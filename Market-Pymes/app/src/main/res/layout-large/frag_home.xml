@@ -8,19 +8,6 @@
     android:background="@color/main">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/contado1"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/lblCredit"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp" />
-
-    <TextView
         android:text="@string/credito1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +18,7 @@
         android:layout_below="@+id/Vcontado"
         android:layout_alignLeft="@+id/lblCredit"
         android:layout_alignStart="@+id/lblCredit"
-        android:layout_marginTop="26dp" />
+        android:layout_marginTop="45dp" />
 
     <TextView
         android:text="@string/lblContado1"
@@ -51,7 +38,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_height="290dp" />
+        android:layout_height="400dp" />
 
     <TextView
         android:text="@string/lblCredito1"
@@ -63,6 +50,19 @@
         tools:ignore="UnknownId"
         android:layout_marginTop="13dp"
         android:layout_below="@+id/lblCredit"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/contado1"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        android:textStyle="normal|bold"
+        android:textColor="@color/colorAccent"
+        android:id="@+id/lblCredit"
+        android:layout_marginTop="114dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

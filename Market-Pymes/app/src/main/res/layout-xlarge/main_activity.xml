@@ -5,42 +5,20 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.market_pymes.MainActivity"
     android:background="@color/background">
 
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/txtEmail"
-        android:hint="@string/correo_electr_nico"
-        android:textAlignment="center"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/lbEmail"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/txtPass"
-        android:hint="@string/contrase_a"
-        android:textAlignment="center"
-        android:layout_below="@+id/txtContraseña"
-        android:layout_alignLeft="@+id/txtEmail"
-        android:layout_alignStart="@+id/txtEmail"
-        android:layout_marginTop="10dp" />
-
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
         app:srcCompat="@drawable/logo_mp_two"
         android:id="@+id/logoApp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="250dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,12 +26,50 @@
         android:id="@+id/tituloMain"
         android:text="@string/log"
         android:textColor="@android:color/background_light"
-        android:textSize="30sp"
         android:textStyle="normal|bold"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
+        android:textSize="46sp"
         android:layout_below="@+id/logoApp"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="15"
+        android:id="@+id/txtEmail"
+        android:hint="@string/correo_electr_nico"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/lbEmail"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="15"
+        android:id="@+id/txtPass"
+        android:hint="@string/contrase_a"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtContraseña"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/lbEmail"
+        android:text="@string/correo_electr_nico"
+        android:textSize="36sp"
+        android:textColor="@android:color/background_light"
+        android:textAlignment="center"
+        android:layout_marginTop="34dp"
+        android:layout_below="@+id/tituloMain"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -65,9 +81,13 @@
         android:textStyle="normal|bold"
         style="@style/Widget.AppCompat.Button.Colored"
         android:background="@color/colorPrimary"
-        android:layout_alignTop="@+id/txtPass"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp" />
+        android:minWidth="180dip"
+        android:layout_below="@+id/txtPass"
+        android:layout_alignRight="@+id/txtContraseña"
+        android:layout_alignEnd="@+id/txtContraseña"
+        android:layout_marginTop="68dp"
+        android:minHeight="64dp"
+        android:textSize="24sp" />
 
     <TextView
         android:text="@string/contrase_a"
@@ -76,22 +96,10 @@
         android:id="@+id/txtContraseña"
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
+        android:textSize="36sp"
+        android:layout_marginTop="34dp"
         android:layout_below="@+id/txtEmail"
         android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lbEmail"
-        android:text="@string/correo_electr_nico"
-        android:textSize="20sp"
-        android:textColor="@android:color/background_light"
-        android:textAlignment="center"
-        android:layout_below="@+id/tituloMain"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
 
 
 </RelativeLayout>

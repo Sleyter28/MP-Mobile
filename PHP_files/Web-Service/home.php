@@ -116,7 +116,9 @@ if (!empty($_POST)) {
             }
             
         }
-        echo json_encode($total_final);
+        $total_final = number_format($total_final, 2);
+        $response["monto"] = $total_final;
+        echo json_encode($response);
     }
     catch(PDOException $e) {
         echo "ERROR: " . $e->getMessage();
