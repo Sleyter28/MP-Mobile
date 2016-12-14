@@ -26,10 +26,9 @@ public class Fragment_Inventarios extends Fragment {
     private String valor, db_name, id_company;
     private EditText value;
     private TextView Res;
-    private Button buscar;
-    private InternetStatus IntSts = new InternetStatus();
     // Progress Dialog
     private ProgressDialog pDialog;
+    public Button buscar;
 
 
     public Fragment_Inventarios() {
@@ -47,7 +46,12 @@ public class Fragment_Inventarios extends Fragment {
         db_name = DataBase.getDB();
         id_company = DataBase.getId_company();
 
-        new ExistenciaMin().execute(db_name, id_company);
+        if (InternetStatus.isOnline(getActivity())) {
+            new ExistenciaMin().execute(db_name, id_company);
+        } else {
+            Toast toast = Toast.makeText(getActivity(), "conexión de datos fallida", Toast.LENGTH_SHORT);
+            toast.show();
+        }
 
         buscar = (Button) viewRoot.findViewById(R.id.btnSearch);
         buscar.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +60,7 @@ public class Fragment_Inventarios extends Fragment {
                 valor = value.getText().toString();
                 valor = "%" + valor + "%";
                 if (!valor.isEmpty() && !db_name.isEmpty() && !id_company.isEmpty()){
-                    if (IntSts.isOnline(getActivity())){
+                    if (InternetStatus.isOnline(getActivity())){
                         new Inventario().execute(db_name, valor, id_company);
                     } else {
                         Toast toast = Toast.makeText(getActivity(), "conexión de datos fallida", Toast.LENGTH_SHORT);
@@ -84,14 +88,13 @@ public class Fragment_Inventarios extends Fragment {
 
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", db_name));
                 param.add(new BasicNameValuePair("valor", valor));
                 param.add(new BasicNameValuePair("id_company", id_company));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/inventario.php";
-                json = JsonHelper.HttpRequest(url_home, param);
+                String json = JsonHelper.HttpRequest(url_home, param);
                 pDialog.dismiss();
                 return json;
             } catch (Exception e) {
@@ -123,13 +126,12 @@ public class Fragment_Inventarios extends Fragment {
 
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", db_name));
                 param.add(new BasicNameValuePair("id_company", id_company));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/existenciasMin.php";
-                json = JsonHelper.HttpRequest(url_home, param);
+                String json = JsonHelper.HttpRequest(url_home, param);
                 pDialog.dismiss();
                 return json;
             } catch (Exception e) {

@@ -26,8 +26,7 @@ public class FragmentCxP extends Fragment {
     private String valor, db_name;
     private EditText value;
     private TextView Resp;
-    private Button CxP;
-    private InternetStatus IntSts = new InternetStatus();
+    public Button CxP;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -48,7 +47,7 @@ public class FragmentCxP extends Fragment {
                 valor = "%" + valor + "%";
                 db_name = DataBase.getDB();
                 if (!valor.isEmpty() && !db_name.isEmpty()){
-                    if (IntSts.isOnline(getActivity())){
+                    if (InternetStatus.isOnline(getActivity())){
                         try {
                             new FragmentCxP.CuentasXPagar().execute(db_name, valor);
                         } catch (Exception e) {
@@ -81,13 +80,12 @@ public class FragmentCxP extends Fragment {
 
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", db_name));
                 param.add(new BasicNameValuePair("valor", valor));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/CxP.php";
-                json = JsonHelper.HttpRequest(url_home, param);
+                String json = JsonHelper.HttpRequest(url_home, param);
                 pDialog.dismiss();
                 return json;
             } catch (Exception e) {

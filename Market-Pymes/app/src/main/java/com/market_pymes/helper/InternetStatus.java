@@ -5,11 +5,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
 public class InternetStatus {
-
-    public void InternetStatus() {
-
-    }
-
     public static boolean isOnline(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

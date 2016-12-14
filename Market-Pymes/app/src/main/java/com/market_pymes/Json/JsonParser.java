@@ -27,18 +27,14 @@ public class JsonParser {
     static String json = "";
 
     // constructor
-
-
     public JsonParser() {
     }
 
     // function get json from url
     // by making HTTP POST or GET mehtod
-    public JSONObject makeHttpRequest(String url, String method,
-                                      List params) {
+    public JSONObject makeHttpRequest(String url, String method, List params) {
         // Making HTTP request
         try {
-
             // check for request method
             if(method == "POST"){
                 // request method is POST
@@ -62,8 +58,6 @@ public class JsonParser {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
             }
-
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
             return jObj;
@@ -81,23 +75,20 @@ public class JsonParser {
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line);
             }
             is.close();
             json = sb.toString();
         } catch (Exception e) {
             Log.e("Buffer Error", "Error converting result " + e.toString());
         }
-
         // try parse the string to a JSON object
         try {
             jObj = new JSONObject(json);
         } catch (JSONException e) {
             Log.e("JSON Parser", "Error parsing data " + e.toString());
         }
-
         // return JSON String
         return jObj;
-
     }
 }

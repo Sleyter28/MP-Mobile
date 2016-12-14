@@ -138,7 +138,7 @@ public class home extends ActionBarActivity {
     //Create method replace fragment
 
     private void replaceFragment(int pos) {
-        Fragment fragment = null;
+        Fragment fragment;
         switch (pos) {
             case 0:
                 fragment = new FragmentHome();

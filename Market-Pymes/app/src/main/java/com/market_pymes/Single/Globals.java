@@ -1,9 +1,7 @@
 package com.market_pymes.Single;
 
-
 public class Globals {
     private static Globals instance;
-
     // Global variable
     private String db_name;
     private String user_name;
@@ -12,8 +10,6 @@ public class Globals {
 
     // Restrict the constructor from being instantiated
     private Globals(){}
-
-
 
     public void logOut() {
         this.db_name = null;

@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.market_pymes.MainActivity;
 import com.market_pymes.R;
 import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
@@ -25,8 +24,7 @@ public class FragmentCxC extends Fragment {
     private String valor, db_name;
     private EditText value;
     private TextView Res;
-    private Button CxC;
-    private InternetStatus IntSts = new InternetStatus();
+    public Button CxC;
     // Progress Dialog
     private ProgressDialog pDialog;
 
@@ -47,7 +45,7 @@ public class FragmentCxC extends Fragment {
                 valor = "%" + valor + "%";
                 db_name = DataBase.getDB();
                 if (!valor.isEmpty() && !db_name.isEmpty()){
-                    if (IntSts.isOnline(getActivity())){
+                    if (InternetStatus.isOnline(getActivity())){
                         try {
                            new CuentasXCobrar().execute(db_name, valor);
                         } catch (Exception e) {
@@ -81,13 +79,12 @@ public class FragmentCxC extends Fragment {
 
         protected String doInBackground(String... args) {
             JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", db_name));
                 param.add(new BasicNameValuePair("valor", valor));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/CxC.php";
-                json = JsonHelper.HttpRequest(url_home, param);
+                String json = JsonHelper.HttpRequest(url_home, param);
                 pDialog.dismiss();
                 return json;
             } catch (Exception e) {

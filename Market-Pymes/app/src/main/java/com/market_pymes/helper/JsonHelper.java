@@ -31,7 +31,7 @@ public class JsonHelper {
             StringBuilder sb = new StringBuilder();
             String line = null;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line);
             }
             is.close();
             String json = sb.toString();

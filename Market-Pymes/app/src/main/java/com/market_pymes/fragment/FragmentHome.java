@@ -38,7 +38,6 @@ public class FragmentHome extends Fragment {
     private JsonParser jParser = new JsonParser();
     private TextView Vcont, Vcred;
     private String date, DB_name;
-    private InternetStatus IntSts = new InternetStatus();
     private String[] xValues = {"Contado", "Credito"};
     private float[] yValues;
     private float Cred = 0;
@@ -64,7 +63,7 @@ public class FragmentHome extends Fragment {
         Vcont = (TextView) rootView.findViewById(R.id.Vcontado);
         Vcred = (TextView) rootView.findViewById(R.id.Vcredito);
 
-        if (IntSts.isOnline(getActivity())){
+        if (InternetStatus.isOnline(getActivity())){
             new Ccontado().execute(date, DB_name);
             new Ccredito().execute(date, DB_name);
         } else {
