@@ -37,7 +37,7 @@ public class FragmentCxP extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View viewRoot = inflater.inflate(R.layout.frag_cxp, container, false);
-        value = (EditText) viewRoot.findViewById(R.id.valueCxP);
+        value = (EditText) viewRoot.findViewById(R.id.valueInvent);
         Resp = (TextView) viewRoot.findViewById(R.id.Resp);
         final Globals DataBase = Globals.getInstance();
         CxP = (Button) viewRoot.findViewById(R.id.btnCxP);
@@ -98,8 +98,10 @@ public class FragmentCxP extends Fragment {
 
         protected void onPostExecute(String json) {
             if (json != null){
-                //Vcont.setText("Monto total: " + json);
                 Resp.setText(json);
+            } else {
+                Toast toast = Toast.makeText(getActivity(), "El valor no a generado resultados", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
     }

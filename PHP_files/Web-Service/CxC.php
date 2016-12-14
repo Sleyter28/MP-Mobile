@@ -117,8 +117,14 @@ if (!empty($_POST)) {
                 $total_final = number_format($total_final, 2);
                 $cuota = number_format($cuota, 2);
 
-                $responseTmp = [];
-                array_push($responseTmp, $id_factura, $cp_fechas_pago, $cp_cliente_nombre, $total_final, $cuota, $total_abono, $saldo);
+                $responseTmp;
+                $responseTmp["id_factura"] = $id_factura;
+                $responseTmp["fechas_pago"] = $cp_fechas_pago;
+                $responseTmp["cliente"] = $cp_cliente_nombre;
+                $responseTmp["deuda"] = $total_final;
+                $responseTmp["cuota"] = $cuota;
+                $responseTmp["abonado"] = $total_abono;
+                $responseTmp["saldo"] = $saldo;
                 array_push($response, $responseTmp);
             }
         }

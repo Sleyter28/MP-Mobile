@@ -10,12 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.market_pymes.Json.JsonParser;
 import com.market_pymes.R;
 import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
-import com.market_pymes.helper.JsonHelper;
 
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +35,7 @@ import java.text.DecimalFormat;
 
 
 public class FragmentHome extends Fragment {
+    private JsonParser jParser = new JsonParser();
     private TextView Vcont, Vcred;
     private String date, DB_name;
     private InternetStatus IntSts = new InternetStatus();
@@ -52,7 +54,6 @@ public class FragmentHome extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.frag_home, container, false);
         mChart = (PieChart) rootView.findViewById(R.id.graf);
         mChart.setRotationEnabled(true);
@@ -119,13 +120,13 @@ public class FragmentHome extends Fragment {
         private DecimalFormat mFormat;
 
         public MyValueFormatter() {
-            mFormat = new DecimalFormat("######,##0"); // use one decimal if needed
+            mFormat = new DecimalFormat("######,##0");
         }
 
         @Override
         public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
             // write your logic here
-            return mFormat.format(value) + ""; // e.g. append a dollar-sign
+            return mFormat.format(value) + "";
         }
     }
 
@@ -139,27 +140,24 @@ public class FragmentHome extends Fragment {
 
     class Ccontado extends AsyncTask<String, String, String> {
         protected String doInBackground(String... args) {
-            JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", DB_name));
                 param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "1"));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
-                json = JsonHelper.HttpRequest(url_home, param);
-                return json;
+                JSONObject json = jParser.makeHttpRequest(url_home, "POST", param);
+                String valor = json.getString("monto");
+                return valor;
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
         }
 
-        protected void onPostExecute(String json) {
-            if (json != null){
-                String val = json.toString();
-                String[] Values = val.split("\n");
-                Cont = Float.parseFloat(Values[0]);
+        protected void onPostExecute(String valor) {
+            if (valor != null){
+                Cont = Float.parseFloat(valor);
                 DecimalFormat formateador = new DecimalFormat("###,###,###.##");
                 Vcont.setText("Monto total: " + formateador.format (Cont));
             }
@@ -168,27 +166,24 @@ public class FragmentHome extends Fragment {
 
     class Ccredito extends AsyncTask<String, String, String> {
         protected String doInBackground(String... args) {
-            JsonHelper JsonHelper = new JsonHelper();
-            String json = "";
             try {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", DB_name));
                 param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "2"));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
-                json = JsonHelper.HttpRequest(url_home, param);
-                return json;
+                JSONObject json = jParser.makeHttpRequest(url_home, "POST", param);
+                String valor = json.getString("monto");
+                return valor;
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
         }
 
-        protected void onPostExecute(String json) {
-            if (json != null){
-                String val = json.toString();
-                String[] Values = val.split("\n");
-                Cred = Float.parseFloat(Values[0]);
+        protected void onPostExecute(String valor) {
+            if (valor != null){
+                Cred = Float.parseFloat(valor);
                 DecimalFormat formateador = new DecimalFormat("###,###,###.##");
                 Vcred.setText("Monto total: " + formateador.format (Cred));
                 float[] yValues = {Cont, Cred};

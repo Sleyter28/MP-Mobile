@@ -25,9 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="49dp"
         android:id="@+id/Resp"
-        android:layout_below="@+id/valueCxP"
-        android:layout_alignLeft="@+id/valueCxP"
-        android:layout_alignStart="@+id/valueCxP" />
+        android:layout_below="@+id/valueInvent"
+        android:layout_alignLeft="@+id/valueInvent"
+        android:layout_alignStart="@+id/valueInvent" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/valueCxP"
+        android:id="@+id/valueInvent"
         android:paddingBottom="16dp"
         android:paddingTop="20dp"
         tools:ignore="RtlHardcoded,UnknownIdInLayout"
@@ -70,9 +70,9 @@
         android:background="@color/background"
         android:layout_marginLeft="70dp"
         android:layout_marginStart="70dp"
-        android:layout_alignBottom="@+id/valueCxP"
-        android:layout_toRightOf="@+id/valueCxP"
-        android:layout_toEndOf="@+id/valueCxP"
+        android:layout_alignBottom="@+id/valueInvent"
+        android:layout_toRightOf="@+id/valueInvent"
+        android:layout_toEndOf="@+id/valueInvent"
         android:textSize="24sp" />
 
 </RelativeLayout>

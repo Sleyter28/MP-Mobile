@@ -1,4 +1,4 @@
-<?php 
+<?php
     $username = "ReadApp";
     $password = "MarketPymesApp";
     $servername = "localhost";

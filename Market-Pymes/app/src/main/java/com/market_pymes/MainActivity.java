@@ -15,7 +15,6 @@ import com.market_pymes.Single.Globals;
 import com.market_pymes.helper.InternetStatus;
 
 import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     // Progress Dialog
     private ProgressDialog pDialog;
     // Creating JSON Parser object
-    JsonParser jParser = new JsonParser();
+    private JsonParser jParser = new JsonParser();
     // url to get all products list
     private final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
     private final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
@@ -76,32 +75,33 @@ public class MainActivity extends AppCompatActivity {
         }
 
         protected String doInBackground(String... args) {
-            String user = null;
             try {
-                // Preparando parametros
                 List params = new ArrayList();
                 params.add(new BasicNameValuePair("email", email));
                 JSONObject json = jParser.makeHttpRequest(url_loginS1, "POST", params);
-                String res = json.toString();
-                String response[] = res.split("\"");
-                String DB_name = response[7];
+                String DB_name = json.getString("DB_name");
                 params.add(new BasicNameValuePair("password", password));
                 params.add(new BasicNameValuePair("DB_name", DB_name));
                 JSONObject Json = jParser.makeHttpRequest(url_loginS2, "POST", params);
-                String id_user = Json.getString("cp_id_user_919819828828");
+                String db_name = Json.getString("DB_name");
+
+                Globals DataBase = Globals.getInstance();
+                DataBase.setDB(DB_name);
+                DataBase.setId_company(Json.getString("id_company"));
+                DataBase.setId_user(Json.getString("id_user"));
+                DataBase.setUser_name(Json.getString("user"));
+
                 pDialog.dismiss();
-                return DB_name;
+                return db_name;
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
             }
         }
 
-        protected void onPostExecute(String DB_name) {
+        protected void onPostExecute(String db_name) {
             pDialog.dismiss();
-            if (DB_name != null){
-                Globals DataBase = Globals.getInstance();
-                DataBase.setDB(DB_name);
+            if (db_name != null){
                 Intent home = new Intent(MainActivity.this,home.class);
                 finish();
                 startActivity(home);

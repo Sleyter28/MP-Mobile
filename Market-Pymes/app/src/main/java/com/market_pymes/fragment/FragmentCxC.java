@@ -98,11 +98,11 @@ public class FragmentCxC extends Fragment {
 
         protected void onPostExecute(String json) {
             if (json != null){
-                //Vcont.setText("Monto total: " + json);
                 Res.setText(json);
+            } else {
+                Toast toast = Toast.makeText(getActivity(), "El valor no a generado resultados", Toast.LENGTH_SHORT);
+                toast.show();
             }
         }
     }
-
-
 }

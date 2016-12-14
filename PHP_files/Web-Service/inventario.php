@@ -10,7 +10,8 @@ if (!empty($_POST)) {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql1 = $conn->prepare("Select a.cp_id_producto_919819828828, a.cp_id_company_919819828828, b.cp_producto_nombre_92939898234,
-        d.cp_categorias_nombre_92939898234, f.cp_producto_descripcion_92939898234, a.cp_id_producto_index_919819828828, g.cp_id_categoria_919819828828
+        d.cp_categorias_nombre_92939898234, f.cp_producto_descripcion_92939898234, a.cp_id_producto_index_919819828828, g.cp_id_categoria_919819828828,
+        i.cp_inventario_matriz_cantidad_919819828828
         from 
         lp_productos_i092002992 a
         INNER JOIN  lp_producto_nombre_i092002992 b
@@ -19,11 +20,13 @@ if (!empty($_POST)) {
         INNER JOIN  lp_producto_descripcion_i092002992 f
         INNER JOIN  lp_productos_categoria_i092002992 g
         INNER JOIN lp_productos_codigo_barras_i092002992 h
+        INNER JOIN lp_inventario_matriz_i092002992 i
         ON b.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and
         c.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and 
         f.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and 
         g.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and
-        h.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828
+        h.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and
+        i.cp_id_producto_919819828828 = a.cp_id_producto_index_919819828828
         where 
         ((b.cp_producto_nombre_92939898234 LIKE :valor or c.cp_producto_codigo_92939898234 LIKE :valor or f.cp_producto_descripcion_92939898234 LIKE :valor ) 
         and (d.cp_id_categoria_919819828828=g.cp_id_categoria_919819828828 and a.cp_activo_92982992='1' ))");
@@ -37,7 +40,7 @@ if (!empty($_POST)) {
             $cp_categorias_nombre=$row['cp_categorias_nombre_92939898234'];
             $cp_producto_descripcion=$row['cp_producto_descripcion_92939898234'];
             $cp_id_company=$row['cp_id_company_919819828828'];
-
+            $inventario=$row['cp_inventario_matriz_cantidad_919819828828'];
             $id_producto=$row['cp_id_producto_index_919819828828'];
             $id_categoria=$row['cp_id_categoria_919819828828'];
 
@@ -103,8 +106,12 @@ if (!empty($_POST)) {
             $total_producto_final_iv=$porcentaje_impuesto+$precio_producto_final;
             $total_producto_final_iv = number_format($total_producto_final_iv, 2);
 
-            $responseTmp = [];
-            array_push($responseTmp, $cp_producto_nombre, $cp_categorias_nombre, $cp_producto_descripcion, $total_producto_final_iv);
+            $responseTmp;
+            $responseTmp["producto_nombre"] = $cp_producto_nombre;
+            $responseTmp["categoria"] = $cp_categorias_nombre;
+            $responseTmp["producto_descripcion"] = $cp_producto_descripcion;
+            $responseTmp["precio"] = $total_producto_final_iv;
+            $responseTmp["inventario"] = $inventario;
             array_push($response, $responseTmp);
             }
 
