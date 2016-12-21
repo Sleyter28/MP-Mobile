@@ -138,7 +138,7 @@ if (!empty($_POST)) {
             }
             $responseTmp["Servicios"] = $servicios;
 
-            /*
+            
             $sql7 = $conn->prepare("select g.cp_monto_gasto_92939898234 from lp_gastos_company_9823984324 g where cp_id_company_919819828828= :id_company 
                 and cp_id_caja_993284234= :id_caja");
             $sql7->execute(array('id_company' => $_POST['id_company'], 'id_caja' => $id_caja));
@@ -151,11 +151,11 @@ if (!empty($_POST)) {
                 $gastos = $gastos + $monto_gasto;
             }
             $responseTmp4["monto"] =  $monto_gasto;
-            $responseTmp["gastos"] = $responseTmp4;*/
-
-            $monto_gasto = 0;
-            $responseTmp4["monto"] =  $monto_gasto;
             $responseTmp["gastos"] = $responseTmp4;
+
+            /*$monto_gasto = 0;
+            $responseTmp4["monto"] =  $monto_gasto;
+            $responseTmp["gastos"] = $responseTmp4;*/
 
             $response = $responseTmp;
         }
