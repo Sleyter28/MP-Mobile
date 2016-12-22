@@ -4,20 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main">
-
-    <ImageView
-        app:srcCompat="@drawable/iso_esquina"
-        android:id="@+id/logoCxc"
-        android:scaleType="fitXY"
-        android:maxHeight="@android:dimen/app_icon_size"
-        android:maxWidth="@android:dimen/app_icon_size"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        tools:ignore="ContentDescription"
-        android:layout_height="480sp"
-        android:layout_width="480sp" />
+    android:background="@drawable/gradient">
 
     <TextView
         android:text="TextView"
@@ -69,11 +56,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnCxC"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background"
+        android:background="@drawable/boton_redondo"
         android:paddingRight="15sp"
         android:layout_alignBaseline="@+id/valueCxC"
         android:layout_alignBottom="@+id/valueCxC"
         android:layout_toRightOf="@+id/lblCxC"
         android:layout_toEndOf="@+id/lblCxC"
         android:textSize="30sp" />
+
 </RelativeLayout>

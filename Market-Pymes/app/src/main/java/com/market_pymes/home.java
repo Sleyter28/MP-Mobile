@@ -48,7 +48,7 @@ public class home extends ActionBarActivity {
 
         //Add item for sliding list
         listSliding.add(new ItemSlideMenu(R.drawable.home_icon, "   Home"));
-        listSliding.add(new ItemSlideMenu(R.drawable.facturacion, "  Facturación"));
+        //listSliding.add(new ItemSlideMenu(R.drawable.facturacion, "  Facturación"));
         listSliding.add(new ItemSlideMenu(R.drawable.cxc, "  Cuentas por Cobrar"));
         listSliding.add(new ItemSlideMenu(R.drawable.cxp, "  Cuentas por Pagar"));
         listSliding.add(new ItemSlideMenu(R.drawable.inventario, "  Inventarios"));
@@ -144,19 +144,19 @@ public class home extends ActionBarActivity {
             case 0:
                 fragment = new FragmentHome();
                 break;
-            case 1:
+            /*case 1:
                 fragment = new Fragment2();
-                break;
-            case 2:
+                break;*/
+            case 1:
                 fragment = new FragmentCxC();
                 break;
-            case 3:
+            case 2:
                 fragment = new FragmentCxP();
                 break;
-            case 4:
+            case 3:
                 fragment = new Fragment_Inventarios();
                 break;
-            case 5:
+            case 4:
                 fragment = new Frag_Cierre();
                 break;
             default:

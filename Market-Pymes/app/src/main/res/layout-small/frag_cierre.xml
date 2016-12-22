@@ -18,16 +18,4 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp" />
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblCredit"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="39dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="34dp"
-        android:id="@+id/respu" />
-
 </RelativeLayout>

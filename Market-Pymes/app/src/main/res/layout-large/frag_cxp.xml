@@ -4,20 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.market_pymes.fragment.FragmentCxP"
-    android:background="@color/main">
-
-    <ImageView
-        android:layout_width="380sp"
-        app:srcCompat="@drawable/iso_esquina"
-        android:id="@+id/logoCxc"
-        android:scaleType="fitXY"
-        android:maxHeight="@android:dimen/app_icon_size"
-        android:maxWidth="@android:dimen/app_icon_size"
-        tools:ignore="ContentDescription"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_height="380sp" />
+    android:background="@drawable/gradient">
 
     <TextView
         android:text="text view"
@@ -67,7 +54,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnCxP"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background"
+        android:background="@drawable/boton_redondo"
         android:layout_marginLeft="70dp"
         android:layout_marginStart="70dp"
         android:layout_alignBottom="@+id/valueInvent"

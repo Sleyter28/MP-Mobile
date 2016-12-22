@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.market_pymes.MainActivity"
-    android:background="@color/background">
+    android:background="@color/colorPrimary">
 
 
     <EditText
@@ -88,7 +88,7 @@
         android:textAlignment="center"
         android:textStyle="normal|bold"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_redondo"
         android:layout_below="@+id/txtPass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />

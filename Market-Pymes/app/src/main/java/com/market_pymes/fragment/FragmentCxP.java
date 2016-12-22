@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentCxP extends Fragment {
-    private String valor, db_name;
+    private String valor, db_name, id_company;
     private EditText value;
     private TextView Resp;
     public Button CxP;
@@ -46,6 +46,7 @@ public class FragmentCxP extends Fragment {
                 valor = value.getText().toString();
                 valor = "%" + valor + "%";
                 db_name = DataBase.getDB();
+                id_company = DataBase.getId_company();
                 if (!valor.isEmpty() && !db_name.isEmpty()){
                     if (InternetStatus.isOnline(getActivity())){
                         try {
@@ -84,6 +85,7 @@ public class FragmentCxP extends Fragment {
                 List param = new ArrayList();
                 param.add(new BasicNameValuePair("DB_name", db_name));
                 param.add(new BasicNameValuePair("valor", valor));
+                param.add(new BasicNameValuePair("id_company", id_company));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/CxP.php";
                 String json = JsonHelper.HttpRequest(url_home, param);
                 pDialog.dismiss();

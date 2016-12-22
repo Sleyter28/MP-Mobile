@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.market_pymes.fragment.Fragment_Inventarios"
-    android:background="@color/main">
+    android:background="@drawable/gradient">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,20 +31,7 @@
         android:layout_marginStart="8dp"
         android:id="@+id/btnSearch"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/background" />
-
-    <ImageView
-        android:layout_width="180sp"
-        android:layout_height="170sp"
-        app:srcCompat="@drawable/iso_esquina"
-        android:id="@+id/logoCxc"
-        android:scaleType="fitXY"
-        android:maxHeight="@android:dimen/app_icon_size"
-        android:maxWidth="@android:dimen/app_icon_size"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:contentDescription="" />
+        android:background="@drawable/boton_redondo" />
 
     <TextView
         android:text="Productos con existencias mínimas"

@@ -37,7 +37,7 @@ import java.text.DecimalFormat;
 public class FragmentHome extends Fragment {
     private JsonParser jParser = new JsonParser();
     private TextView Vcont, Vcred;
-    private String date, DB_name;
+    private String date, DB_name, id_company;
     private String[] xValues = {"Contado", "Credito"};
     private float[] yValues;
     private float Cred = 0;
@@ -60,6 +60,7 @@ public class FragmentHome extends Fragment {
         date = getdate();
         Globals DataBase = Globals.getInstance();
         DB_name = DataBase.getDB();
+        id_company = DataBase.getId_company();
         Vcont = (TextView) rootView.findViewById(R.id.Vcontado);
         Vcred = (TextView) rootView.findViewById(R.id.Vcredito);
 
@@ -144,6 +145,7 @@ public class FragmentHome extends Fragment {
                 param.add(new BasicNameValuePair("DB_name", DB_name));
                 param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "1"));
+                param.add(new BasicNameValuePair("id_company", id_company));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
                 JSONObject json = jParser.makeHttpRequest(url_home, "POST", param);
                 String valor = json.getString("monto");
@@ -170,6 +172,7 @@ public class FragmentHome extends Fragment {
                 param.add(new BasicNameValuePair("DB_name", DB_name));
                 param.add(new BasicNameValuePair("fecha", date));
                 param.add(new BasicNameValuePair("tipo", "2"));
+                param.add(new BasicNameValuePair("id_company", id_company));
                 String url_home = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/home.php";
                 JSONObject json = jParser.makeHttpRequest(url_home, "POST", param);
                 String valor = json.getString("monto");

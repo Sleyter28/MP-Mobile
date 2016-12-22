@@ -12,7 +12,7 @@
 
     <ListView
         android:id="@+id/lv_sliding_menu"
-        android:background="#457DD7"
+        android:background="@color/colorPrimaryDark"
         android:choiceMode="singleChoice"
         android:layout_gravity="start"
 
