@@ -56,6 +56,7 @@ public class home extends ActionBarActivity {
 
         adapter = new SlidingMenuAdapter(this, listSliding);
         listViewSliding.setAdapter(adapter);
+        listViewSliding.setDividerHeight(16);
 
         //Display icon to open/ close sliding list
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

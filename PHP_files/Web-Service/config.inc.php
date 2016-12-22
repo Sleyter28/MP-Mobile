@@ -2,7 +2,7 @@
     $username = "ReadApp";
     $password = "MarketPymesApp";
     $servername = "localhost";
-    $dbname = "database_per_client";
+    $dbname = "Database_per_Client";
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

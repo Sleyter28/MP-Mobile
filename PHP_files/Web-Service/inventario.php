@@ -28,9 +28,10 @@ if (!empty($_POST)) {
         h.cp_id_producto_919819828828=a.cp_id_producto_index_919819828828 and
         i.cp_id_producto_919819828828 = a.cp_id_producto_index_919819828828
         where 
+        a.cp_id_company_919819828828 = :id_company and a.cp_activo_92982992 = 1 and
         ((b.cp_producto_nombre_92939898234 LIKE :valor or c.cp_producto_codigo_92939898234 LIKE :valor or f.cp_producto_descripcion_92939898234 LIKE :valor ) 
         and (d.cp_id_categoria_919819828828=g.cp_id_categoria_919819828828 and a.cp_activo_92982992='1' ))");
-        $sql1->execute(array('valor' => $_POST['valor']));
+        $sql1->execute(array('valor' => $_POST['valor'], 'id_company' => $_POST['id_company']));
         $resultado1 = $sql1->fetchAll();
 
         foreach ($resultado1 as $row) {
@@ -113,6 +114,8 @@ if (!empty($_POST)) {
             $responseTmp["precio"] = $total_producto_final_iv;
             $responseTmp["inventario"] = $inventario;
             array_push($response, $responseTmp);
+            $responseSep = "+";
+            array_push($response, $responseSep);
             }
 
         echo json_encode($response);

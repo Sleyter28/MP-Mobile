@@ -46,6 +46,8 @@ if (!empty($_POST)) {
                 $responseTmp["inventario"] = $inventario;
                 $responseTmp["limite"] = $producto_limite;
                 array_push($response, $responseTmp);
+                $responseSep = "+";
+                array_push($response, $responseSep);
             } else {
 
             }

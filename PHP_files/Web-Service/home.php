@@ -44,7 +44,7 @@ if (!empty($_POST)) {
             lp_productos_impuesto_i092002992 im
            
             where 
-            f.id=:id and
+            f.id=:id and f.cp_id_company_919819828828 = :id_company and
             fc.cp_id_factura_993284234 =f.cp_id_factura_993284234 and
             p.cp_id_producto_919819828828 = fc.cp_id_producto_919819828828 and
             im.cp_id_producto_919819828828 = fc.cp_id_producto_919819828828 and
@@ -53,7 +53,7 @@ if (!empty($_POST)) {
             uh.cp_id_utilidad_987823784234=fc.cp_id_utilidad_987823784234 and 
             f.cp_activar_factura_919819828828='2' and
             f.cp_tipo_factura_92384= :tipo ");
-            $sql2->execute(array('id' => $id_fact=$row['id'], 'tipo' => $_POST['tipo']));
+            $sql2->execute(array('id' => $id_fact=$row['id'], 'tipo' => $_POST['tipo'], 'id_company' => $_POST['id_company']));
             $resultado2 = $sql2->fetchAll();
 
             foreach ($resultado2 as $row) {
@@ -116,7 +116,7 @@ if (!empty($_POST)) {
             }
             
         }
-        $total_final = number_format($total_final, 2);
+        //$total_final = number_format($total_final, 2);
         $response["monto"] = $total_final;
         echo json_encode($response);
     }

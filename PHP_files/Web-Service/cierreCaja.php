@@ -150,7 +150,7 @@ if (!empty($_POST)) {
                 $monto_gasto=$row['cp_monto_gasto_92939898234'];
                 $gastos = $gastos + $monto_gasto;
             }
-            $responseTmp4["monto"] =  $monto_gasto;
+            $responseTmp4["monto"] =  $gastos;
             $responseTmp["gastos"] = $responseTmp4;
 
             /*$monto_gasto = 0;

@@ -34,14 +34,6 @@
         android:layout_alignStart="@+id/txtEmail"
         android:layout_marginTop="10dp" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo_mp_two"
-        android:id="@+id/logoApp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +56,7 @@
         android:textAlignment="center"
         android:textStyle="normal|bold"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/boton_redondo"
         android:layout_alignTop="@+id/txtPass"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp" />
@@ -92,6 +84,15 @@
         android:layout_below="@+id/tituloMain"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp" />
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/logo_mp_two"
+        android:id="@+id/logoApp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
 
 </RelativeLayout>

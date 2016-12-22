@@ -17,8 +17,8 @@ if (!empty($_POST)) {
             $cp_cliente_nombre=$row['cp_cliente_nombre_92939898234'];
             $cp_cliente_codigo=$row['cp_cliente_codigo_92939898234'];
 
-            $sql2 = $conn->prepare("select cp_id_factura_993284234, cp_cantidad_meses_098982222, cp_fechas_98283748234, cp_fechas_pago_98238723487 from lp_creditos_99829383 where cp_id_cliente_919819828828= :d_cliente  order by cp_fechas_pago_98238723487 asc");
-            $sql2->execute(array('d_cliente' => $id_cliente));
+            $sql2 = $conn->prepare("select cp_id_factura_993284234, cp_cantidad_meses_098982222, cp_fechas_98283748234, cp_fechas_pago_98238723487 from lp_creditos_99829383 where cp_id_cliente_919819828828= :d_cliente and cp_id_company_919819828828 = :id_company order by cp_fechas_pago_98238723487 asc");
+            $sql2->execute(array('d_cliente' => $id_cliente, 'id_company' => $_POST['id_company']));
             $resultado2 = $sql2->fetchAll();
 
             foreach ($resultado2 as $row) {
@@ -126,6 +126,8 @@ if (!empty($_POST)) {
                 $responseTmp["abonado"] = $total_abono;
                 $responseTmp["saldo"] = $saldo;
                 array_push($response, $responseTmp);
+                $responseSep = "+";
+                array_push($response, $responseSep);
             }
         }
         echo json_encode($response);

@@ -25,9 +25,9 @@ if (!empty($_POST)) {
             $sql2 = $conn->prepare("select cp_id_factura_993284234, cp_cantidad_meses_098982222, cp_id_proveedor_919819828828, cp_fechas_98283748234, 
                 cp_fechas_pago_98238723487
                 from lp_creditos_compras_99829383
-                where cp_id_proveedor_919819828828= :id_proveedor
+                where cp_id_proveedor_919819828828= :id_proveedor and cp_id_company_919819828828 = :id_company
                 order by cp_fechas_pago_98238723487 asc");
-            $sql2->execute(array('id_proveedor' => $cp_id_proveedor));
+            $sql2->execute(array('id_proveedor' => $cp_id_proveedor, 'id_company' => $_POST['id_company']));
             $resultado2 = $sql2->fetchAll();
 
             foreach ($resultado2 as $row) {
@@ -117,8 +117,9 @@ if (!empty($_POST)) {
                 $responseTmp["cuota"] = $cuota;
                 $responseTmp["abonado"] = $total_abono;
                 $responseTmp["saldo"] = $saldo;
-
                 array_push($response, $responseTmp);
+                $responseSep = "+";
+                array_push($response, $responseSep);
                 }
             }
         

@@ -3,7 +3,7 @@ require("config.inc.php");
 
 if (!empty($_POST)) {
 	try{
-		$sql = $conn->prepare('SELECT DB_name FROM clients_info WHERE email = :email');
+		$sql = $conn->prepare('SELECT DB_name FROM Clients_info WHERE email = :email');
 		$sql->execute(array('email' => $_POST['email']));
 		$resultado = $sql->fetchAll();
 
