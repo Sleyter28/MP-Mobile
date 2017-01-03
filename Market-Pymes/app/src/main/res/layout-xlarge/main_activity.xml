@@ -5,101 +5,118 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.market_pymes.MainActivity"
     android:background="@color/colorPrimary">
 
 
-    <ImageView
-        android:layout_width="match_parent"
-        app:srcCompat="@drawable/logo_mp_two"
-        android:id="@+id/logoApp"
-        android:layout_alignParentTop="true"
-        android:layout_height="250dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tituloMain"
+        android:id="@+id/textView2"
         android:text="@string/log"
         android:textColor="@android:color/background_light"
+        android:textSize="52sp"
         android:textStyle="normal|bold"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_marginTop="50dp"
-        android:textSize="46sp"
+        android:layout_marginTop="50sp"
         android:layout_below="@+id/logoApp"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="15"
-        android:id="@+id/txtEmail"
-        android:hint="@string/correo_electr_nico"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/lbEmail"
+        app:srcCompat="@drawable/logo_mp_two"
+        android:id="@+id/logoApp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp" />
-
-    <EditText
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="15"
-        android:id="@+id/txtPass"
-        android:hint="@string/contrase_a"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/txtContraseña"
+        android:layout_marginTop="50sp" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp" />
+        android:layout_centerVertical="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/lbEmail"
-        android:text="@string/correo_electr_nico"
-        android:textSize="36sp"
-        android:textColor="@android:color/background_light"
-        android:textAlignment="center"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/tituloMain"
-        android:layout_centerHorizontal="true" />
+        <android.support.design.widget.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:layout_below="@+id/txtEmail"
+            android:textColorHint="@color/white"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent">
 
-    <Button
-        android:text="@string/log"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnLogin"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@drawable/boton_redondo"
-        android:minWidth="180dip"
-        android:layout_below="@+id/txtPass"
-        android:layout_alignRight="@+id/txtContraseña"
-        android:layout_alignEnd="@+id/txtContraseña"
-        android:layout_marginTop="68dp"
-        android:minHeight="64dp"
-        android:textSize="24sp" />
+            <EditText
+                android:layout_width="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/txtEmail"
+                android:hint="@string/correo_electr_nico"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/lbEmail"
+                android:layout_centerHorizontal="true"
+                android:textColorHint="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColor="@android:color/white"
+                android:layout_height="wrap_content"
+                android:textSize="30sp" />
 
-    <TextView
-        android:text="@string/contrase_a"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtContraseña"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="36sp"
-        android:layout_marginTop="34dp"
-        android:layout_below="@+id/txtEmail"
-        android:layout_centerHorizontal="true" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:layout_below="@+id/txtPass"
+            android:textColorHint="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/txtPass"
+                android:hint="@string/contrase_a"
+                android:layout_below="@+id/txtContraseña"
+                android:layout_alignLeft="@+id/txtEmail"
+                android:layout_alignStart="@+id/txtEmail"
+                android:layout_marginTop="10dp"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="30sp"
+                android:textColor="@android:color/white" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:text="@string/log"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLogin"
+            android:textAlignment="center"
+            android:textStyle="normal|bold"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:background="@drawable/boton_redondo"
+            android:layout_alignTop="@+id/txtPass"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60sp"
+            android:elevation="0dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:textSize="36sp"
+            android:padding="10sp" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>
