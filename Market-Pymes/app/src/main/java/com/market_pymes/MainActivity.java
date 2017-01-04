@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
 import com.market_pymes.Json.JsonParser;
 import com.market_pymes.Single.Globals;
+import com.market_pymes.Volley.VolleyS;
 import com.market_pymes.helper.InternetStatus;
 
 import org.apache.http.message.BasicNameValuePair;
@@ -31,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
     // Creating JSON Parser object
     private JsonParser jParser = new JsonParser();
     // url to get all products list
-    private final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
-    private final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
+    final String url_loginS1 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS1.php";
+    final String url_loginS2 = "http://www.demomp2015.yoogooo.com/demoMovil/Web-Service/loginS2.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
                 DataBase.setId_company(Json.getString("id_company"));
                 DataBase.setId_user(Json.getString("id_user"));
                 DataBase.setUser_name(Json.getString("user"));
-
                 pDialog.dismiss();
                 return db_name;
             } catch (Exception e) {

@@ -16,11 +16,12 @@
     <string name="btnAddPro">Agregar</string>
     <string name="btnFacturar">Facturar</string>
     <string name="btnExistencias">Existencias</string>
+    <string name="lblCxC">Cuentas por Cobrar</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_opened">Opened</string>
     <string name="drawer_closed">Closed</string>
-    <string name="nameCod">Nombre o Factura</string>
+    <string name="nameCod">Nombre o Cod del cliente</string>
     <string name="nameCodDes">Nombre, Factura o Descripción</string>
 </resources>
