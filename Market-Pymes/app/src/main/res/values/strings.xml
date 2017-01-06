@@ -24,4 +24,13 @@
     <string name="drawer_closed">Closed</string>
     <string name="nameCod">Nombre o Cod del cliente</string>
     <string name="nameCodDes">Nombre, Factura o Descripción</string>
+
+
+    <string name="num_factura"># de Factura</string>
+    <string name="fecha_pago">Fecha de Pago</string>
+    <string name="cliente">Cliente</string>
+    <string name="deuda">Monto de la deuda</string>
+    <string name="cuota">Cuota Mensual</string>
+    <string name="abonado">Total Abonado</string>
+    <string name="saldo">Saldo</string>
 </resources>
