@@ -1,6 +1,5 @@
 package com.market_pymes.adapter;
 
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,9 +28,11 @@ public class RecyclerViewCxC extends RecyclerView.Adapter<RecyclerViewCxC.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
-            factura = (TextView) itemView.findViewById(R.id.card_nun_fact);
+            CxC cuenta = new CxC();
+            factura = (TextView) itemView.findViewById(R.id.factNum);
             factura.setOnClickListener(this);
-            fecha = (TextView) itemView.findViewById(R.id.card_fecha);
+            factura.setText(cuenta.getIdFactura());
+            fecha = (TextView) itemView.findViewById(R.id.fec);
             factura.setOnClickListener(this);
             //faltan
         }

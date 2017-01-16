@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1e296d</color>
+    <color name="colorPrimary">#18225a</color>
     <color name="colorPrimaryDark">#374497</color>
     <color name="colorAccent">#91b6ef</color>
     <color name="background">#ff303f9f</color>
@@ -8,4 +8,6 @@
     <color name="opossitive">#ffab18</color>
     <color name="white">#ffffff</color>
     <color name="button">#446CA9</color>
+    <color name="cardBackground">#00bcd4</color>
+    <color name="btnBuscar">#41669d</color>
 </resources>

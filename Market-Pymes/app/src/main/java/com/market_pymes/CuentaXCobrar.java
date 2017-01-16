@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,7 @@ import java.util.Map;
 public class CuentaXCobrar extends AppCompatActivity {
     private String valor;
     private EditText value;
-    private TextView Res;
-    public Button CxC;
+    public ImageButton CxC;
     private RequestQueue fRequestQueue;
     private ProgressDialog pDialog;
 
@@ -44,8 +44,8 @@ public class CuentaXCobrar extends AppCompatActivity {
         VolleyS volley = VolleyS.getInstance(getApplicationContext());
         fRequestQueue = volley.getRequestQueue();
         value = (EditText) findViewById(R.id.valueCxC);
-        Res = (TextView) findViewById(R.id.res);
-        CxC = (Button) findViewById(R.id.btnCxC);
+        //Res = (TextView) findViewById(R.id.res);
+        CxC = (ImageButton) findViewById(R.id.btnCxC);
 
         CxC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class CuentaXCobrar extends AppCompatActivity {
                             toast.show();
                         }
                     } else {
-                        Toast toast = Toast.makeText(getApplicationContext(), "conexión de datos fallida", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getApplicationContext(), "La conexión de datos falló", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 } else {
@@ -100,6 +100,7 @@ public class CuentaXCobrar extends AppCompatActivity {
                                 cuenta.setAbonado(Integer.parseInt(row.getString("abonado")));
                                 cuenta.setSaldo(Integer.parseInt(row.getString("saldo")));
                                 listCuentas.add(cuenta);
+                                Log.d("Lista", listCuentas.toString());
                             }
 
                         } catch (JSONException e) {
@@ -110,7 +111,6 @@ public class CuentaXCobrar extends AppCompatActivity {
                         tmpList = tmpList.replace("\"+\",", "");
                         tmpList = tmpList.replace(",\"+\"", "");
                         //List<String> myList = new ArrayList<String>(Arrays.asList(tmpList.split("#")));
-                        Res.setText(tmpList);
                     }
                 },
                 new Response.ErrorListener()

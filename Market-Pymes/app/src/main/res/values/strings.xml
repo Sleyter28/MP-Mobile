@@ -5,8 +5,8 @@
     <string name="contrase_a1">Contraseña</string>
     <string name="correo_electr_nico">Correo Electrónico</string>
     <string name="correo_electr_nico1">Correo Electrónico:</string>
-    <string name="contado1">  Ventas a Contado</string>
-    <string name="credito1">  Ventas a Crédito</string>
+    <string name="contado1">  Ventas Contado</string>
+    <string name="credito1">  Ventas Crédito</string>
     <string name="lblContado1">  Monto total:</string>
     <string name="lblCredito1">  Monto total:</string>
     <string name="lblFactitle">Facturación</string>
@@ -26,11 +26,11 @@
     <string name="nameCodDes">Nombre, Factura o Descripción</string>
 
 
-    <string name="num_factura"># de Factura</string>
-    <string name="fecha_pago">Fecha de Pago</string>
-    <string name="cliente">Cliente</string>
-    <string name="deuda">Monto de la deuda</string>
-    <string name="cuota">Cuota Mensual</string>
-    <string name="abonado">Total Abonado</string>
-    <string name="saldo">Saldo</string>
+    <string name="num_factura">Nº Factura:</string>
+    <string name="fecha_pago">Fecha de Pago:</string>
+    <string name="cliente">Cliente:</string>
+    <string name="deuda">Deuda:</string>
+    <string name="cuota">Cuota:</string>
+    <string name="abonado">Total Abonado:</string>
+    <string name="saldo">Saldo:</string>
 </resources>

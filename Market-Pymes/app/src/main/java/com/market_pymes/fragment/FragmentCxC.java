@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.market_pymes.R;
 import com.market_pymes.Single.Globals;
 import com.market_pymes.Volley.VolleyS;
+import com.market_pymes.adapter.adapterCxC;
 import com.market_pymes.helper.InternetStatus;
 import com.market_pymes.model.CxC;
 
@@ -31,16 +33,21 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.market_pymes.R.id.reciclador;
+import static com.market_pymes.R.id.recicler;
 
 
 public class FragmentCxC extends Fragment {
     private String valor;
     private EditText value;
-    public Button CxC;
+    public ImageButton CxC;
     private RequestQueue fRequestQueue;
     private ProgressDialog pDialog;
-    private RecyclerView recyclerViewSearch;
+
+    private RecyclerView recyclerCxC;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter adapter;
 
@@ -52,9 +59,13 @@ public class FragmentCxC extends Fragment {
         VolleyS volley = VolleyS.getInstance(getActivity());
         fRequestQueue = volley.getRequestQueue();
         View viewRoot = inflater.inflate(R.layout.frag_cxc, container, false);
+
         value = (EditText) viewRoot.findViewById(R.id.valueCxC);
-        CxC = (Button) viewRoot.findViewById(R.id.btnCxC);
-        recyclerViewSearch = (RecyclerView) viewRoot.findViewById(R.id.recicler);
+        CxC = (ImageButton) viewRoot.findViewById(R.id.btnCxC);
+        recyclerCxC = (RecyclerView) viewRoot.findViewById(recicler);
+
+        layoutManager = new LinearLayoutManager(getActivity());
+
 
         CxC.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +82,7 @@ public class FragmentCxC extends Fragment {
                             pDialog.show();
 
                             Request(valor);
+
                             pDialog.dismiss();
                         } catch (Exception e) {
                             Toast toast = Toast.makeText(getActivity(), "El valor no a generado resultados", Toast.LENGTH_SHORT);
@@ -113,20 +125,30 @@ public class FragmentCxC extends Fragment {
                                 cuenta.setAbonado(Float.parseFloat(row.getString("abonado")));
                                 cuenta.setSaldo(Float.parseFloat(row.getString("saldo")));
                                 listCuentas.add(cuenta);
+
+                                List<CxC> prueba = new ArrayList<>();
+                                CxC cuen = new CxC();
+                                cuen.setIdFactura(12);
+                                cuen.setFechaPago(10);
+                                cuen.setName("Sleyter Angulo");
+                                cuen.setDeuda((float) 12000.00);
+                                cuen.setCuota((float) 1200.0);
+                                cuen.setAbonado((float) 0.0);
+                                cuen.setSaldo((float) 0.0);
+
+
+                                prueba.add(cuen);
+
+                                Log.d("Lista es: ",prueba.toString());
+
+                                recyclerCxC.setHasFixedSize(true);
+                                recyclerCxC.setLayoutManager(layoutManager);
+
+                                adapter = new adapterCxC(listCuentas);
+                                recyclerCxC.setAdapter(adapter);
+
+                                //Log.d("List",listCuentas.toString());
                             }
-
-                            // Obtener el Recycler
-
-                            recyclerViewSearch.setHasFixedSize(true);
-                            // Usar un administrador para LinearLayout
-                            layoutManager = new LinearLayoutManager(getActivity());
-                            recyclerViewSearch.setLayoutManager(layoutManager);
-                            // Crear un nuevo adaptador
-                            //adapter = new RecyclerViewAdapterMainMenu(getApplicationContext(),nameOption);
-                            //adapter = new RecyclerViewAdaptarHoldersSearchMedicine(getActivity(),listCuentas);
-                            recyclerViewSearch.setAdapter(adapter);
-                            recyclerViewSearch.setVisibility(View.VISIBLE);
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -137,7 +159,7 @@ public class FragmentCxC extends Fragment {
                 {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getActivity(), "el valor no a generado resultados", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), "El valor introducido no ha generado resultados", Toast.LENGTH_SHORT);
                         toast.show();
                         Log.d("Error.Response", error.toString());
                     }

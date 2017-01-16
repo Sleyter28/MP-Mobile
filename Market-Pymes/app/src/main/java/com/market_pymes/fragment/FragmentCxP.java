@@ -56,7 +56,7 @@ public class FragmentCxP extends Fragment {
                             toast.show();
                         }
                     } else {
-                        Toast toast = Toast.makeText(getActivity(), "conexión de datos fallida", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), "La conexión de datos falló", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 } else {

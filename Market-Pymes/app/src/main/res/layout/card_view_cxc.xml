@@ -1,109 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="170dp"
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginTop="22dp"
-        android:id="@+id/card_view_cxc">
+        android:background="#4CAF50"
+        >
+        <!--Label factura-->
+        <TextView
+            android:text="@string/num_factura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/numFact"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="#fff"
+            />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
+        <!--Label numero de factura-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/factNum"
+            android:text="0008"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/numFact"
+            android:textColor="#fff"
+            android:layout_marginLeft="5dp"
+            />
+
+        <!--Label fecha-->
+        <TextView
+            android:text="@string/fecha_pago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pagoFec"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_marginLeft="18dp"
+            android:layout_toRightOf="@+id/factNum"
+            android:layout_marginTop="5dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label fecha de pago-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fec"
+            android:layout_marginTop="5dp"
+            android:text="10"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_toRightOf="@+id/pagoFec"
+            android:layout_marginLeft="8dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label cliente-->
+        <TextView
+            android:text="@string/cliente"
+            android:layout_width="wrap_content"
+            android:id="@+id/lblCliente"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/numFact"
+            android:layout_marginLeft="15dp"
+            android:textSize="16dp"
+            android:textColor="#fff"/>
+
+        <!--Label Nombre de Cliente-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credito Cliente"
+            android:id="@+id/card_cliente"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/lblCliente"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_below="@+id/numFact"
+            android:layout_marginLeft="8dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label deuda-->
+        <TextView
+            android:text="@string/deuda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:id="@+id/lbldeuda"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_below="@+id/lblCliente"
+            android:layout_marginLeft="15dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label valor de la deuda-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="37650"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/card_deuda"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/lbldeuda"
+            android:layout_below="@+id/card_cliente"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label cuota-->
+        <TextView
+            android:text="@string/cuota"
+            android:id="@+id/lblCuota"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginLeft="15dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:layout_alignTop="@+id/card_cuota" />
+
+        <!--Label valor couta-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_cuota"
+            android:text="18750"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/card_deuda"
+            android:layout_toRightOf="@+id/lblCuota"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            />
+
+        <!--Label abono-->
+        <TextView
+            android:text="@string/abonado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblabono"
+            android:layout_below="@+id/lblCuota"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_abonado"
+            android:layout_below="@+id/card_cuota"
+            android:layout_marginTop="3dp"
+            android:layout_toRightOf="@+id/lblabono"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:text="0.0"
+            android:layout_marginLeft="5dp"
+            />
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#e6e6e6"
+            android:id="@+id/linea"
+            android:layout_marginTop="5dp"
+            android:layout_above="@+id/view"
+            android:layout_centerHorizontal="true">
+        </View>
+
+        <View
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignTop="@+id/cardView"
-            android:layout_alignLeft="@+id/cardView"
-            android:layout_alignStart="@+id/cardView"
-            android:layout_marginLeft="37dp"
-            android:layout_marginStart="37dp">
-
-            <TextView
-                android:text="@string/num_factura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardView"
-                android:layout_alignLeft="@+id/cardView"
-                android:layout_alignStart="@+id/cardView"
-                android:layout_marginLeft="83dp"
-                android:layout_marginStart="83dp"
-                android:layout_marginTop="51dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_nun_fact" />
-
-            <TextView
-                android:text="@string/fecha_pago"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_fecha" />
-
-            <TextView
-                android:text="@string/cliente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_cliente" />
-
-            <TextView
-                android:text="@string/deuda"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_deuda" />
-
-            <TextView
-                android:text="@string/cuota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_cuota" />
-
-            <TextView
-                android:text="@string/abonado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_abonado" />
-
-            <TextView
-                android:text="@string/saldo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/card_saldo" />
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+            android:background="#388E3C"
+            android:id="@+id/view"
+            android:layout_below="@+id/lblabono">
+        </View>
 
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_saldo"
+            android:text="37516"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:layout_below="@+id/linea"
+            android:textColor="#fff"
+            android:layout_alignTop="@+id/linea"
+            android:layout_toRightOf="@+id/pagoFec"
+            android:layout_marginTop="8dp"/>
 
-</RelativeLayout>
+        <TextView
+            android:text="@string/saldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblSaldo"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/linea"
+            android:layout_toLeftOf="@+id/card_saldo"
+            android:layout_toStartOf="@+id/card_saldo" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
