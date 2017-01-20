@@ -61,8 +61,8 @@ public class FragmentHome extends Fragment {
         Globals DataBase = Globals.getInstance();
         DB_name = DataBase.getDB();
         id_company = DataBase.getId_company();
-        Vcont = (TextView) rootView.findViewById(R.id.Vcontado);
-        Vcred = (TextView) rootView.findViewById(R.id.Vcredito);
+        Vcont = (TextView) rootView.findViewById(R.id.valorCont);
+        Vcred = (TextView) rootView.findViewById(R.id.valorCred);
 
         if (InternetStatus.isOnline(getActivity())){
             new Ccontado().execute(date, DB_name);
@@ -160,7 +160,7 @@ public class FragmentHome extends Fragment {
             if (valor != null){
                 Cont = Float.parseFloat(valor);
                 DecimalFormat formateador = new DecimalFormat("###,###,###.##");
-                Vcont.setText("Monto total: " + formateador.format (Cont));
+                Vcont.setText("¢ "+formateador.format (Cont));
             }
         }
     }
@@ -187,7 +187,7 @@ public class FragmentHome extends Fragment {
             if (valor != null){
                 Cred = Float.parseFloat(valor);
                 DecimalFormat formateador = new DecimalFormat("###,###,###.##");
-                Vcred.setText("Monto total: " + formateador.format (Cred));
+                Vcred.setText("¢ " + formateador.format (Cred));
                 float[] yValues = {Cont, Cred};
                 setDataForPieChart(yValues, xValues);
             }

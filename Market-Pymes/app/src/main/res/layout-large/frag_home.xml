@@ -11,7 +11,7 @@
         android:text="@string/credito1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView7"
+        android:id="@+id/titleCredi"
         android:textSize="30sp"
         android:textStyle="normal|bold"
         android:textColor="@color/colorAccent"
@@ -27,7 +27,7 @@
         android:textSize="18sp"
         tools:ignore="UnknownId"
         android:textStyle="normal|bold"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@+id/titleCredi"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:layout_width="wrap_content" />

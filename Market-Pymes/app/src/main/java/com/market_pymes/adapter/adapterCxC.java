@@ -31,13 +31,13 @@ public class adapterCxC extends RecyclerView.Adapter<adapterCxC.CxCViewHolder>{
 
         public CxCViewHolder(View v) {
             super(v);
-            numFact = (TextView) v.findViewById(R.id.factNum);
-            fecha = (TextView) v.findViewById(R.id.fec);
-            cliente = (TextView) v.findViewById(R.id.card_cliente);
-            deuda = (TextView) v.findViewById(R.id.card_deuda);
-            cuota = (TextView) v.findViewById(R.id.card_cuota);
-            abono = (TextView) v.findViewById(R.id.card_abonado);
-            saldo = (TextView) v.findViewById(R.id.card_saldo);
+            numFact = (TextView) v.findViewById(R.id.facxCobrar);
+            fecha = (TextView) v.findViewById(R.id.fecha);
+            cliente = (TextView) v.findViewById(R.id.nomCliente);
+            deuda = (TextView) v.findViewById(R.id.deudaxCobrar);
+            cuota = (TextView) v.findViewById(R.id.cuotaxCobrar);
+            abono = (TextView) v.findViewById(R.id.abonoXCobrar);
+            saldo = (TextView) v.findViewById(R.id.saldoxCobrar);
         }
     }
 

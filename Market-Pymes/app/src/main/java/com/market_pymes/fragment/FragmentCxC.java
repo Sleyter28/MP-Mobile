@@ -89,7 +89,7 @@ public class FragmentCxC extends Fragment {
                             toast.show();
                         }
                     } else {
-                        Toast toast = Toast.makeText(getActivity(), "conexión de datos fallida", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(getActivity(), "La conexión de datos falló", Toast.LENGTH_SHORT);
                         toast.show();
                     }
                 } else {
@@ -126,28 +126,12 @@ public class FragmentCxC extends Fragment {
                                 cuenta.setSaldo(Float.parseFloat(row.getString("saldo")));
                                 listCuentas.add(cuenta);
 
-                                List<CxC> prueba = new ArrayList<>();
-                                CxC cuen = new CxC();
-                                cuen.setIdFactura(12);
-                                cuen.setFechaPago(10);
-                                cuen.setName("Sleyter Angulo");
-                                cuen.setDeuda((float) 12000.00);
-                                cuen.setCuota((float) 1200.0);
-                                cuen.setAbonado((float) 0.0);
-                                cuen.setSaldo((float) 0.0);
-
-
-                                prueba.add(cuen);
-
-                                Log.d("Lista es: ",prueba.toString());
-
                                 recyclerCxC.setHasFixedSize(true);
                                 recyclerCxC.setLayoutManager(layoutManager);
 
                                 adapter = new adapterCxC(listCuentas);
                                 recyclerCxC.setAdapter(adapter);
 
-                                //Log.d("List",listCuentas.toString());
                             }
 
                         } catch (JSONException e) {

@@ -29,6 +29,7 @@
     <string name="num_factura">Nº Factura:</string>
     <string name="fecha_pago">Fecha de Pago:</string>
     <string name="cliente">Cliente:</string>
+    <string name="proveedor">Proveedor:</string>
     <string name="deuda">Deuda:</string>
     <string name="cuota">Cuota:</string>
     <string name="abonado">Total Abonado:</string>
