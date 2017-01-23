@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="442dp"
     android:layout_height="170dp"
-
+    android:layout_marginLeft="60dp"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="442dp"
         android:layout_height="wrap_content"
-        android:background="#009688"
+        android:background="#4CAF50"
         >
         <!--Label factura-->
         <TextView
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:id="@+id/facxPagar"
+            android:id="@+id/facxCobrar"
             android:text="0008"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/numFact"
@@ -47,7 +47,7 @@
             android:id="@+id/pagoFec"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginLeft="18dp"
-            android:layout_toRightOf="@+id/facxPagar"
+            android:layout_toRightOf="@+id/facxCobrar"
             android:layout_marginTop="5dp"
             android:textColor="#fff"
             />
@@ -56,7 +56,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/fecxPagar"
+            android:id="@+id/fecha"
             android:layout_marginTop="5dp"
             android:text="10"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -67,7 +67,7 @@
 
         <!--Label cliente-->
         <TextView
-            android:text="@string/proveedor"
+            android:text="@string/cliente"
             android:layout_width="wrap_content"
             android:id="@+id/lblCliente"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -82,8 +82,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apple"
-            android:id="@+id/nomProveedor"
+            android:text="Credito Cliente"
+            android:id="@+id/nomCliente"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/lblCliente"
             android:textAppearance="?android:attr/textAppearanceSmall"
@@ -113,16 +113,14 @@
             android:layout_height="wrap_content"
             android:text="37650"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:id="@+id/deudaxPagar"
+            android:id="@+id/deudaxCobrar"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/lbldeuda"
-            android:layout_below="@+id/nomProveedor"
+            android:layout_below="@+id/nomCliente"
             android:layout_marginLeft="5dp"
             android:textSize="16dp"
             android:textColor="#fff"
-            android:layout_alignBottom="@+id/lbldeuda"
-            android:layout_alignRight="@+id/cuotaxPagar"
-            android:layout_alignEnd="@+id/cuotaxPagar" />
+            />
 
         <!--Label cuota-->
         <TextView
@@ -134,16 +132,16 @@
             android:layout_marginLeft="15dp"
             android:textSize="16dp"
             android:textColor="#fff"
-            android:layout_alignTop="@+id/cuotaxPagar" />
+            android:layout_alignTop="@+id/cuotaxCobrar" />
 
         <!--Label valor couta-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cuotaxPagar"
+            android:id="@+id/cuotaxCobrar"
             android:text="18750"
             android:layout_marginTop="3dp"
-            android:layout_below="@+id/deudaxPagar"
+            android:layout_below="@+id/deudaxCobrar"
             android:layout_toRightOf="@+id/lblCuota"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:layout_marginLeft="5dp"
@@ -168,8 +166,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/abonadoxPagar"
-            android:layout_below="@+id/cuotaxPagar"
+            android:id="@+id/abonoXCobrar"
+            android:layout_below="@+id/cuotaxCobrar"
             android:layout_marginTop="3dp"
             android:layout_toRightOf="@+id/lblabono"
             android:textSize="16dp"
@@ -190,17 +188,16 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#00695C"
+            android:background="#388E3C"
             android:id="@+id/viewCredito"
             android:layout_below="@+id/lblabono">
         </View>
 
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/saldoxPagar"
+            android:id="@+id/saldoxCobrar"
             android:text="37516"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="16dp"
@@ -208,7 +205,8 @@
             android:textColor="#fff"
             android:layout_alignTop="@+id/linea"
             android:layout_toRightOf="@+id/pagoFec"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="8dp"
+            android:layout_alignBottom="@+id/lblSaldo" />
 
         <TextView
             android:text="@string/saldo"
@@ -221,8 +219,8 @@
             android:layout_marginRight="12dp"
             android:layout_marginTop="8dp"
             android:layout_below="@+id/linea"
-            android:layout_toLeftOf="@+id/saldoxPagar"
-            android:layout_toStartOf="@+id/saldoxPagar" />
+            android:layout_toLeftOf="@+id/saldoxCobrar"
+            android:layout_toStartOf="@+id/saldoxCobrar" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

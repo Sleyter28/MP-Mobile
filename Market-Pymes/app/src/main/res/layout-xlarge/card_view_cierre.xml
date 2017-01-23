@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="491dp"
+    android:layout_height="170dp"
+    android:layout_marginLeft="170dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="491dp"
+        android:layout_height="wrap_content"
+        android:background="#D1D1D1"
+        >
+        <!--Label nombre-->
+        <TextView
+            android:text="Apertura Caja:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/lblNombre"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/nomProducto"
+            android:text="0008"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/lblNombre"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_marginLeft="5dp"
+            />
+
+
+        <!--Label Categoria-->
+        <TextView
+            android:text="Facturas a Contado:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblCategoria"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_below="@+id/lblNombre"
+            android:layout_marginLeft="15dp"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="37650"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/catProducto"
+            android:layout_toRightOf="@+id/lblCategoria"
+            android:layout_below="@+id/nomProducto"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+        <!--Label servicios-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¢12039.01"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:id="@+id/serContado"
+            android:layout_toRightOf="@+id/lblservContado"
+            android:layout_below="@+id/catProducto"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+        <!--Label Descripcion-->
+        <TextView
+            android:text="Servicios a Contado:"
+            android:id="@+id/lblDescripcion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_below="@+id/lblservContado"
+            android:layout_alignLeft="@+id/lblprecio"
+            android:layout_alignStart="@+id/lblprecio" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descProducto"
+            android:text="18750"
+            android:layout_below="@+id/serContado"
+            android:layout_toRightOf="@+id/lblDescripcion"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_marginLeft="5dp"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            />
+
+
+        <!--Label precio-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/precProducto"
+            android:layout_below="@+id/descProducto"
+            android:layout_toRightOf="@+id/lblprecio"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:text="0.0"
+            android:layout_marginLeft="5dp" />
+
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#332E2D"
+            android:id="@+id/viewCredito"
+            android:layout_below="@+id/lblprecio">
+        </View>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cantProducto"
+            android:text="37516"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:layout_alignBaseline="@+id/lblCantidad"
+            android:layout_alignBottom="@+id/lblCantidad"
+            android:layout_toRightOf="@+id/lblCantidad"
+            android:layout_toEndOf="@+id/lblCantidad"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#e6e6e6"
+            android:id="@+id/linea"
+            android:layout_below="@+id/lblprecio"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+        </View>
+
+        <TextView
+            android:text="Factura a Crédito:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblservContado"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_alignBaseline="@+id/serContado"
+            android:layout_alignBottom="@+id/serContado"
+            android:layout_alignLeft="@+id/lblDescripcion"
+            android:layout_alignStart="@+id/lblDescripcion" />
+
+        <TextView
+            android:text="Servicios a Crédito:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblprecio"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="@color/common_google_signin_btn_text_dark_focused"
+            android:layout_below="@+id/lblDescripcion"
+            android:layout_alignLeft="@+id/lblCategoria"
+            android:layout_alignStart="@+id/lblCategoria" />
+
+        <TextView
+            android:text="Gastos:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblCantidad"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="16dp"
+            android:textColor="#fff"
+            android:layout_marginTop="11dp"
+            android:layout_below="@+id/linea"
+            android:layout_toRightOf="@+id/nomProducto"
+            android:layout_toEndOf="@+id/nomProducto" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

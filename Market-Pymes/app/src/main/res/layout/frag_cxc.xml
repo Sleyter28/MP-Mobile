@@ -57,7 +57,7 @@
             android:layout_gravity="center_vertical"
             android:background="@drawable/boton_verde"
             android:src="@drawable/ic_search_white_24dp"
-            app:srcCompat="@android:drawable/ic_menu_search"
+            app:srcCompat="@drawable/lupa2"
             />
 
 
