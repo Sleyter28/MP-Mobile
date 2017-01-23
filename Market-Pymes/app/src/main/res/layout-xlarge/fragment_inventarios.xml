@@ -1,61 +1,113 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.market_pymes.fragment.Fragment_Inventarios"
-    android:background="@drawable/gradient">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reciclador"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inventarios"
-        android:textSize="30sp"
-        android:layout_gravity="center"
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:elevation="20dp">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"
+            android:layout_below="@+id/txtEmail"
+            android:textColorHint="@android:color/black"
+            android:gravity="center"
+            android:layout_width="230sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="15dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="textPersonName"
+                android:id="@+id/valueSearch"
+                tools:ignore="UnknownIdInLayout"
+                android:ems="10"
+                android:hint="@string/nameCod"
+                android:layout_below="@+id/lblCxC"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="8sp"
+                android:layout_marginTop="15dp"
+                android:textColorLink="@color/bckgVerde" />
+        </android.support.design.widget.TextInputLayout>
+
+        <ImageButton
+            android:layout_width="38dp"
+            android:layout_height="33dp"
+            android:id="@+id/btnInventario"
+            style="@android:style/Widget.Button"
+            android:layout_alignBottom="@+id/valueCxC"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentEnd="false"
+            android:layout_marginLeft="50sp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/boton_naranja"
+            android:src="@drawable/ic_search_white_24dp"
+            app:srcCompat="@drawable/lupa2"
+            />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="15sp"
+        app:srcCompat="@drawable/gradient"
+        android:id="@+id/imageView2"
+        android:background="#00000000"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reciclerSearch"
+        android:layout_width="match_parent"
+        android:layout_height="414dp"
+        android:padding="3dp"
+        android:scrollbars="vertical"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="39dp"
-        android:textStyle="normal|bold"
-        tools:ignore="HardcodedText"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/lblInventarios" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="@string/btnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/valueInvent"
-        android:layout_toRightOf="@+id/valueInvent"
-        android:layout_toEndOf="@+id/valueInvent"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:id="@+id/btnSearch"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:background="@drawable/boton_redondo" />
 
     <TextView
         android:text="Productos con existencias mínimas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/logoCxc"
+        android:layout_marginTop="12dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView5"
-        android:textSize="18sp"
         android:textColor="@android:color/holo_red_dark" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_marginTop="25dp"
-        android:id="@+id/valueInvent"
-        tools:ignore="UnknownIdInLayout"
-        android:hint="@string/nameCodDes"
-        android:layout_below="@+id/lblInventarios"
-        android:layout_alignRight="@+id/lblInventarios"
-        android:layout_alignEnd="@+id/lblInventarios"
-        android:layout_marginRight="38dp"
-        android:layout_marginEnd="38dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reciclerMinimo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp"
+        android:scrollbars="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+

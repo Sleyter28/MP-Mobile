@@ -54,6 +54,7 @@
             android:layout_alignParentRight="false"
             android:layout_alignParentEnd="false"
             android:layout_marginLeft="50sp"
+            android:padding="30dp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/boton_verde"
             android:src="@drawable/ic_search_white_24dp"

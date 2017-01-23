@@ -1,43 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:theme="@style/AppTheme"
-    android:background="#ffffff">
-
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/graf"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
+    android:background="#ffffff"
+    >
+    <View
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:background="#332E2D"
+        android:id="@+id/squareMonto"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_height="450dp" />
+        android:layout_marginTop="78dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        >
+    </View>
+
+    <View
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:background="#332E2D"
+        android:id="@+id/view3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="78dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"></View>
+
+    <TextView
+        android:text="@string/lblCredito1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Vcontado"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        tools:ignore="UnknownId"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginBottom="14dp"
+        android:layout_alignBottom="@+id/squareMonto"
+        android:layout_alignLeft="@+id/squareMonto"
+        android:layout_alignStart="@+id/squareMonto"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="#D1D1D1"
+        android:id="@+id/view"
+        android:layout_above="@+id/titleCredi"
+        android:layout_toEndOf="@+id/squareMonto"
+        android:layout_marginRight="4dp"
+        android:layout_toRightOf="@+id/squareMonto"
+        tools:ignore="RtlHardcoded"></View>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="#1D9ACC"
+        android:id="@+id/viewCredito"
+        android:layout_alignBottom="@+id/titleCredi"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp">
+    </View>
+
+    <View
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:background="#332E2D"
+        android:id="@+id/view4"
+        android:layout_below="@+id/viewCredito"
+        android:layout_alignLeft="@+id/squareMonto"
+        android:layout_alignStart="@+id/squareMonto">
+
+    </View>
+
 
     <TextView
         android:text="@string/credito1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:id="@+id/titleCredi"
         android:textSize="30sp"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent"
-        android:layout_marginTop="120dp"
-        android:layout_below="@+id/lblCredit"
-        android:layout_centerHorizontal="true" />
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/squareMonto"
+        android:layout_centerHorizontal="true"
+        android:padding="3dp" />
 
-    <TextView
-        android:text="@string/lblContado1"
-        android:layout_height="wrap_content"
-        android:id="@+id/Vcredito"
-        android:textSize="30sp"
-        tools:ignore="UnknownId"
-        android:textStyle="normal|bold"
+    <View
         android:layout_width="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/titleCredi"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="50dp"
+        android:background="#1D9ACC"
+        android:id="@+id/view2"
+        android:layout_above="@+id/view"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="4dp"
+        android:layout_marginLeft="4dp">
+
+    </View>
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,25 +117,74 @@
         android:text="@string/contado1"
         android:textSize="30sp"
         android:layout_gravity="center"
-        android:textStyle="normal|bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="#ffffff"
         android:id="@+id/lblCredit"
-        android:layout_marginTop="100dp"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/titleCredi"
-        android:layout_alignEnd="@+id/titleCredi" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp" />
+    <View
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:background="#D1D1D1"
+        android:id="@+id/montoCont"
+        tools:ignore="RtlHardcoded"
+        android:layout_below="@+id/viewCredito"
+        android:layout_toRightOf="@+id/squareMonto"
+        android:layout_alignRight="@+id/viewCredito"
+        android:layout_alignEnd="@+id/viewCredito">
+    </View>
 
     <TextView
-        android:text="@string/lblCredito1"
+        android:text="@string/lblContado1"
+        android:layout_height="wrap_content"
+        android:id="@+id/Vcredito"
+        android:textSize="18sp"
+        tools:ignore="UnknownId"
+        android:textStyle="normal|bold"
+        android:layout_marginTop="13dp"
+        android:layout_width="wrap_content"
+        android:textColor="@color/cardview_light_background"
+        android:layout_alignTop="@+id/view4"
+        android:layout_alignLeft="@+id/Vcontado"
+        android:layout_alignStart="@+id/Vcontado" />
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/graf"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/view4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Vcontado"
-        android:textSize="30sp"
+        android:textSize="18sp"
         android:textStyle="normal|bold"
-        tools:ignore="UnknownId"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/lblCredit"
-        android:layout_alignLeft="@+id/Vcredito"
-        android:layout_alignStart="@+id/Vcredito" />
+        android:textColor="@color/cardview_light_background"
+        android:layout_alignBaseline="@+id/Vcontado"
+        android:layout_alignBottom="@+id/Vcontado"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="52dp"
+        android:layout_marginEnd="52dp"
+        android:id="@+id/valorCont" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cardview_light_background"
+        android:id="@+id/valorCred"
+        android:layout_alignBaseline="@+id/Vcredito"
+        android:layout_alignBottom="@+id/Vcredito"
+        android:layout_alignTop="@+id/Vcredito"
+        android:layout_alignRight="@+id/view"
+        android:layout_alignEnd="@+id/view"
+        android:layout_marginRight="52dp"
+        android:layout_marginEnd="52dp"/>
 
 </RelativeLayout>

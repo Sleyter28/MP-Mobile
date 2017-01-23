@@ -8,19 +8,6 @@
     android:background="@color/white"
     android:weightSum="1">
 
-    <!--<TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lblCxC"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:textStyle="normal|bold"
-        tools:ignore="HardcodedText"
-        android:textColor="@color/colorAccent"
-        android:id="@+id/lblCxC"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />-->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -54,7 +41,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="8sp"
-                android:layout_marginTop="15dp"/>
+                android:layout_marginTop="15dp"
+                android:textColorLink="@color/bckgVerde" />
         </android.support.design.widget.TextInputLayout>
 
         <ImageButton
@@ -67,33 +55,35 @@
             android:layout_alignParentEnd="false"
             android:layout_marginLeft="50sp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/boton_redondo"
-            android:src="@drawable/lupa"
-            app:srcCompat="@android:drawable/ic_menu_search" />
+            android:background="@drawable/boton_verde"
+            android:src="@drawable/ic_search_white_24dp"
+            app:srcCompat="@drawable/lupa2"
+            />
 
 
     </LinearLayout>
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="15sp"
         app:srcCompat="@drawable/gradient"
         android:id="@+id/imageView2"
         android:background="#00000000"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recicler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="3dp"
+        android:scrollbars="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recicler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="3dp"
-            android:scrollbars="vertical"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
 

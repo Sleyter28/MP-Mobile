@@ -12,7 +12,7 @@
 
     <ListView
         android:id="@+id/lv_sliding_menu"
-        android:background="@color/colorPrimaryDark"
+        android:background="#212121"
         android:choiceMode="singleChoice"
         android:layout_gravity="start"
 
@@ -20,6 +20,6 @@
         android:headerDividersEnabled="true"
         android:footerDividersEnabled="true"
         android:layout_width="200dp"
-        android:layout_height="290dp"></ListView>
+        android:layout_height="match_parent"></ListView>
 
 </android.support.v4.widget.DrawerLayout>
