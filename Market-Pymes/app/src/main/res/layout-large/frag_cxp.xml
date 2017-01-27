@@ -36,7 +36,7 @@
                 android:id="@+id/valueCxP"
                 tools:ignore="UnknownIdInLayout"
                 android:ems="10"
-                android:hint="@string/nameCod"
+                android:hint="@string/nameCodDes"
                 android:layout_below="@+id/lblCxC"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"

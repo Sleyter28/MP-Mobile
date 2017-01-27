@@ -11,7 +11,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#FB8C00"
+        android:background="#E53935"
         >
         <!--Label nombre-->
         <TextView
@@ -125,7 +125,7 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="#EF6C00"
+            android:background="#C62828"
             android:id="@+id/viewCredito"
             android:layout_below="@+id/linea">
         </View>
@@ -165,12 +165,12 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="16dp"
             android:textColor="#fff"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="24dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
             android:layout_below="@+id/linea"
-            android:layout_toRightOf="@+id/descProducto"
-            android:layout_toEndOf="@+id/descProducto" />
+            android:layout_toRightOf="@+id/catProducto"
+            android:layout_toEndOf="@+id/catProducto" />
 
 
     </RelativeLayout>

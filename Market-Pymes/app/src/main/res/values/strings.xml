@@ -23,7 +23,7 @@
     <string name="drawer_opened">Opened</string>
     <string name="drawer_closed">Closed</string>
     <string name="nameCod">Nombre o Cod del cliente</string>
-    <string name="nameCodDes">Nombre, Factura o Descripción</string>
+    <string name="nameCodDes">Nombre o descripción</string>
 
 
     <string name="num_factura">Nº Factura:</string>

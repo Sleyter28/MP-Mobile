@@ -49,7 +49,7 @@ public class Fragment_Inventarios extends Fragment {
     private RecyclerView.LayoutManager layoutManagerInventario;
     private RecyclerView.Adapter adapterInventario;
 
-
+    private RequestQueue request2;
     private RecyclerView recycler2;
     private RecyclerView.LayoutManager lmanager;
     private RecyclerView.Adapter adapter2;
@@ -61,11 +61,19 @@ public class Fragment_Inventarios extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        VolleyS volley2 = VolleyS.getInstance(getActivity());
+        request2 = volley2.getRequestQueue();
+
+        View viewRoot = inflater.inflate(R.layout.fragment_inventarios, container, false);
+
+        recycler2 = (RecyclerView) viewRoot.findViewById(R.id.reciclerMinimo);
+
+        lmanager = new LinearLayoutManager(getActivity());
+
+        Request2();
 
         VolleyS volley = VolleyS.getInstance(getActivity());
-
         requestQueue = volley.getRequestQueue();
-        View viewRoot = inflater.inflate(R.layout.fragment_inventarios, container, false);
 
         value = (EditText) viewRoot.findViewById(R.id.valueSearch);
 
@@ -75,8 +83,6 @@ public class Fragment_Inventarios extends Fragment {
 
         layoutManagerInventario = new LinearLayoutManager(getActivity());
 
-        recycler2 = (RecyclerView) viewRoot.findViewById(R.id.reciclerMinimo);
-        lmanager = new LinearLayoutManager(getActivity());
 
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +99,7 @@ public class Fragment_Inventarios extends Fragment {
                         pDialog.show();
 
                         Request(valor);
-                        Request2();
+
 
                         pDialog.dismiss();
                     } catch (Exception e){
@@ -111,6 +117,59 @@ public class Fragment_Inventarios extends Fragment {
         });
 
         return viewRoot;
+    }
+
+    //Obtiene los productos con existencias mínimas
+    private void Request2(){
+        final String url = "http://demomp2015.yoogooo.com/demoMovil/Web-Service/existenciasMin.php";
+        StringRequest postRequest = new StringRequest(Request.Method.POST,url,
+                new Response.Listener<String>(){
+                    @Override
+                    public void onResponse(String response) {
+                        try{
+                            response = response.replace("\"+\",", "");
+                            response = response.replace(",\"+\"", "");
+                            JSONArray json = new JSONArray(response);
+                            ArrayList<Min> listMinimos = new ArrayList<>();
+                            for (int i=0; i<json.length(); i++){
+                                Min minimos = new Min();
+                                JSONObject row = json.getJSONObject(i);
+                                minimos.setCodProducto(row.getString("Cod"));
+                                minimos.setCatProducto(row.getString("categoria"));
+                                minimos.setDespProducto(row.getString("producto_descripcion"));
+                                minimos.setCantProducto(Integer.parseInt(row.getString("inventario")));
+                                minimos.setLimProducto(Integer.parseInt(row.getString("limite")));
+
+                                listMinimos.add(minimos);
+
+                                recycler2.setHasFixedSize(true);
+                                recycler2.setLayoutManager(lmanager);
+
+                                adapter2 = new adapterMin(listMinimos);
+                                recycler2.setAdapter(adapter2);
+                            }
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        ){
+            @Override
+            protected Map<String, String> getParams() {
+                Globals DataBase = Globals.getInstance();
+                Map<String,String> params = new HashMap<>();
+                params.put("DB_name",DataBase.getDB());
+                params.put("id_company",DataBase.getId_company());
+                return params;
+            }
+        };
+        request2.add(postRequest);
     }
 
     private void Request(final String valor){
@@ -168,59 +227,6 @@ public class Fragment_Inventarios extends Fragment {
         requestQueue.add(postRequest);
     }
 
-    //Obtiene los productos con existencias mínimas
-    private void Request2(){
-        final String url = "http://demomp2015.yoogooo.com/demoMovil/Web-Service/existenciaMin.php";
-        StringRequest postRequest = new StringRequest(Request.Method.POST,url,
-                new Response.Listener<String>(){
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            response = response.replace("\"+\",", "");
-                            response = response.replace(",\"+\"", "");
-                            JSONArray json = new JSONArray(response);
-                            ArrayList<Min> listMinimos = new ArrayList<>();
-                            for (int i=0; i<json.length(); i++){
-                                Min minimos = new Min();
-                                JSONObject row = json.getJSONObject(i);
-                                minimos.setCodProducto(row.getString("Cod"));
-                                minimos.setCatProducto(row.getString("categoria"));
-                                minimos.setDespProducto(row.getString("producto_descripcion"));
-                                minimos.setLimProducto(Integer.parseInt(row.getString("limite")));
-                                minimos.setCantProducto(Integer.parseInt(row.getString("inventario")));
 
-                                listMinimos.add(minimos);
-
-                                recycler2.setHasFixedSize(true);
-                                recycler2.setLayoutManager(lmanager);
-
-                                adapter2 = new adapterMin(listMinimos);
-                                recycler2.setAdapter(adapter2);
-                            }
-                        }catch (JSONException e){
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getActivity(), "El valor introducido no ha generado resultados", Toast.LENGTH_SHORT);
-                        toast.show();
-                        Log.d("Error.Response", error.toString());
-                    }
-                }
-        ){
-            @Override
-            protected Map<String, String> getParams() {
-                Globals DataBase = Globals.getInstance();
-                Map<String,String> params = new HashMap<>();
-                params.put("DB_name",DataBase.getDB());
-                params.put("id_company",DataBase.getId_company());
-                return params;
-            }
-        };
-        requestQueue.add(postRequest);
-    }
 
 }
