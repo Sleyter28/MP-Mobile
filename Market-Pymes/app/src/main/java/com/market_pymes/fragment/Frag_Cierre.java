@@ -78,18 +78,23 @@ public class Frag_Cierre extends Fragment {
                             float factTempCre = 0;
                             float servTempCon = 0;
                             float servTempCre = 0;
+                            float total = 0;
+                            float cajaInicial = 0;
+
                             JSONObject json = new JSONObject(response);
                             ArrayList<cierreCaja> cuentas = new ArrayList<>();
                             cierreCaja cierreCaja = new cierreCaja();
 
                             String caja = json.getString("caja");
                             JSONObject caja1 = new JSONObject(caja);
-                            cierreCaja.setCajaInicial(Float.parseFloat(caja1.getString("monto")));
+                            cajaInicial = Float.parseFloat(caja1.getString("monto"));
+                            cierreCaja.setCajaInicial(cajaInicial);
 
                             //Obteniendo los valores de gastos
                             String gasto = json.getString("gastos");
                             JSONObject gasto1 = new JSONObject(gasto);
-                            cierreCaja.setGastos(Float.parseFloat(gasto1.getString("monto")));
+                            float gastos = Float.parseFloat(gasto1.getString("monto"));
+                            cierreCaja.setGastos(gastos);
 
                             //Obteniendo los valores de las facturas a credito y contado
                             JSONArray facturas = new JSONArray(json.getString("facturas"));
@@ -116,7 +121,9 @@ public class Frag_Cierre extends Fragment {
                             }
                             cierreCaja.setServContado(servTempCon);
                             cierreCaja.setServCredito(servTempCre);
+                            total = (cajaInicial+facTempCon+servTempCon) - gastos;
 
+                            cierreCaja.setTotal(total);
 
                             //Pasar el objeto cierreCaja al ArrayList
                             cuentas.add(cierreCaja);

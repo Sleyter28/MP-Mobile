@@ -23,6 +23,7 @@ public class adapterCierre extends RecyclerView.Adapter<adapterCierre.CierreView
         public TextView inventario;
         public TextView cantidad;
         public TextView precio;
+        public TextView total;
 
         public CierreViewHolder(View v){
             super(v);
@@ -31,7 +32,8 @@ public class adapterCierre extends RecyclerView.Adapter<adapterCierre.CierreView
             descripcion = (TextView) v.findViewById(R.id.serContado); // fact credito
             inventario = (TextView) v.findViewById(R.id.descProducto); // ser contado
             precio = (TextView) v.findViewById(R.id.precProducto); // ser credito
-            cantidad = (TextView) v.findViewById(R.id.cantProducto); // gasto
+            cantidad = (TextView) v.findViewById(R.id.textView4); // gasto
+            total = (TextView) v.findViewById(R.id.cantProducto); // total
         }
     }
 
@@ -50,12 +52,13 @@ public class adapterCierre extends RecyclerView.Adapter<adapterCierre.CierreView
 
     @Override
     public void onBindViewHolder(CierreViewHolder holder, int position) {
-        holder.codProducto.setText(String.valueOf(items.get(position).getCajaInicial()));
-        holder.categoria.setText(String.valueOf(items.get(position).getFactContado()));
-        holder.descripcion.setText(String.valueOf(items.get(position).getFactCredito()));
-        holder.inventario.setText(String.valueOf(items.get(position).getServContado()));
-        holder.precio.setText(String.valueOf(items.get(position).getServCredito()));
-        holder.cantidad.setText(String.valueOf(items.get(position).getGastos()));
+        holder.codProducto.setText("¢"+String.valueOf(items.get(position).getCajaInicial()));
+        holder.categoria.setText("¢"+String.valueOf(items.get(position).getFactContado()));
+        holder.descripcion.setText("¢"+String.valueOf(items.get(position).getFactCredito()));
+        holder.inventario.setText("¢"+String.valueOf(items.get(position).getServContado()));
+        holder.precio.setText("¢"+String.valueOf(items.get(position).getServCredito()));
+        holder.cantidad.setText("¢"+String.valueOf(items.get(position).getGastos()));
+        holder.total.setText("¢"+String.valueOf(items.get(position).getTotal()));
     }
 
 

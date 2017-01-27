@@ -11,6 +11,9 @@ public class cierreCaja {
     private float servContado;
     private float servCredito;
     private float gastos;
+    private float total;
+
+
 
     public cierreCaja() {
     }
@@ -61,5 +64,13 @@ public class cierreCaja {
 
     public void setGastos(float gastos) {
         this.gastos = gastos;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
 }
