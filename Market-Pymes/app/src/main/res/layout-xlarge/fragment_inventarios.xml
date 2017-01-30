@@ -55,9 +55,7 @@
             android:layout_marginLeft="50sp"
             android:layout_gravity="center_vertical"
             android:background="@drawable/boton_naranja"
-            android:src="@drawable/ic_search_white_24dp"
-            app:srcCompat="@drawable/lupa2"
-            />
+            android:src="@drawable/search" />
 
 
     </LinearLayout>
